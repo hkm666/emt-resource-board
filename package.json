@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "EMT Resource Board - team scheduling and availability (Vercel + Neon)",
   "private": true,
-  "main": "api/state/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "vercel dev",
     "deploy": "vercel --prod",

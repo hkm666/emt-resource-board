@@ -3,21 +3,6 @@
   "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/api/state", "dest": "/api/state/index.js" },
-    { "src": "/api/me", "dest": "/api/me/index.js" },
-    { "src": "/api/export", "dest": "/api/export/index.js" },
-    { "src": "/api/people", "dest": "/api/people/index.js" },
-    { "src": "/api/people/(?<id>[^/]+)", "dest": "/api/people/[id].js?id=$id" },
-    { "src": "/api/projects", "dest": "/api/projects/index.js" },
-    { "src": "/api/projects/(?<id>[^/]+)", "dest": "/api/projects/[id].js?id=$id" },
-    { "src": "/api/bookings", "dest": "/api/bookings/index.js" },
-    { "src": "/api/bookings/(?<id>[^/]+)", "dest": "/api/bookings/[id].js?id=$id" },
-    { "src": "/api/holidays", "dest": "/api/holidays/index.js" },
-    { "src": "/api/holidays/(?<id>[^/]+)", "dest": "/api/holidays/[id].js?id=$id" },
-    { "src": "/", "dest": "/public/index.html" },
-    { "src": "/index.html", "dest": "/public/index.html" }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",
