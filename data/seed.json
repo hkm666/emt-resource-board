@@ -1,0 +1,572 @@
+{
+ "people": {
+  "abdullahhakim": {
+   "active": true,
+   "arm": "",
+   "name": "Abdullah Hakim Samsudin",
+   "role": "Technical staff",
+   "skills": []
+  },
+  "amersyazwan": {
+   "active": true,
+   "arm": "",
+   "name": "Muhammad Amersyazwan Aziz",
+   "role": "Technical staff",
+   "skills": []
+  },
+  "faiz": {
+   "active": true,
+   "arm": "",
+   "name": "Muhamad Faiz Zainudin",
+   "role": "Technical staff",
+   "skills": []
+  },
+  "luqman": {
+   "active": true,
+   "arm": "",
+   "name": "Luqman Hakim Zulkifli",
+   "role": "Technical staff",
+   "skills": []
+  },
+  "shahidan": {
+   "active": true,
+   "arm": "Project Management",
+   "name": "Shahidan Ismail",
+   "role": "Project Manager",
+   "skills": [
+    "Project Mgmt"
+   ]
+  },
+  "ex-tech-a": {
+   "name": "Example · Field Tech A",
+   "role": "Field Technician",
+   "arm": "Field Operations",
+   "skills": [
+    "AWOS/RVR",
+    "AWS / Surface Met",
+    "Driving (site)"
+   ],
+   "active": true,
+   "example": true
+  },
+  "ex-tech-b": {
+   "name": "Example · Field Tech B",
+   "role": "Field Technician",
+   "arm": "Field Operations",
+   "skills": [
+    "Siren / EWS",
+    "Electrical / Solar",
+    "Civil / Mast"
+   ],
+   "active": true,
+   "example": true
+  },
+  "ex-prod": {
+   "name": "Example · Production Tech",
+   "role": "Production Technician",
+   "arm": "Production",
+   "skills": [
+    "RTU / Telemetry",
+    "Fabrication",
+    "QC / Testing"
+   ],
+   "active": true,
+   "example": true
+  },
+  "ex-eng": {
+   "name": "Example · Engineer",
+   "role": "Project Engineer",
+   "arm": "Engineering",
+   "skills": [
+    "AWOS/RVR",
+    "Calibration",
+    "Documentation"
+   ],
+   "active": true,
+   "example": true
+  },
+  "ex-it": {
+   "name": "Example · IT Engineer",
+   "role": "Systems Engineer",
+   "arm": "IT Division",
+   "skills": [
+    "Software / IT",
+    "Networking / Comms"
+   ],
+   "active": true,
+   "example": true
+  }
+ },
+ "projects": {
+  "chms": {
+   "client": "MET Malaysia",
+   "code": "CHMS",
+   "color": "#8E5A9B",
+   "end": "2026-10-31",
+   "name": "Coastal Hazard Monitoring diorama (MET-CHMS-001)",
+   "pmId": "",
+   "start": "",
+   "status": "Active"
+  },
+  "seismic": {
+   "client": "",
+   "code": "SEISMIC",
+   "color": "#6B7A2A",
+   "end": "",
+   "name": "Seismic station tender (Johor)",
+   "pmId": "",
+   "start": "",
+   "status": "Tender"
+  },
+  "siren30": {
+   "client": "MET Malaysia",
+   "code": "SIREN30",
+   "color": "#B5562B",
+   "end": "",
+   "name": "Upgrade & replacement of 30 tsunami sirens",
+   "pmId": "",
+   "start": "",
+   "status": "Active"
+  },
+  "tide8": {
+   "client": "MET Malaysia",
+   "code": "TIDE8",
+   "color": "#3B6EA5",
+   "end": "2026-11-30",
+   "name": "Tide gauge maintenance – 8 stations (JMM PPP02/806/02/26 40)",
+   "pmId": "shahidan",
+   "start": "2026-10-02",
+   "status": "Active"
+  },
+  "upsi": {
+   "client": "UPSI",
+   "code": "UPSI-AWS",
+   "color": "#2C8585",
+   "end": "",
+   "name": "UPSI automatic weather station upgrade + client training",
+   "pmId": "",
+   "start": "",
+   "status": "Active"
+  },
+  "wmka": {
+   "client": "MET Malaysia",
+   "code": "WMKA",
+   "color": "#2F6B4F",
+   "end": "",
+   "name": "Alor Setar pilot station upgrade",
+   "pmId": "",
+   "start": "",
+   "status": "Proposal"
+  }
+ },
+ "bookings": {
+  "ex-b1": {
+   "kind": "project",
+   "personId": "ex-tech-a",
+   "projectId": "tide8",
+   "start": "2026-10-05",
+   "end": "2026-10-07",
+   "work": "site",
+   "alloc": 100,
+   "location": "Port Dickson",
+   "jobNo": "WO-EX-001",
+   "weekends": false,
+   "note": "Example: pre-work site visit",
+   "example": true
+  },
+  "ex-b2": {
+   "kind": "leave",
+   "personId": "ex-tech-a",
+   "leaveType": "AL",
+   "start": "2026-10-12",
+   "end": "2026-10-13",
+   "note": "Example: annual leave",
+   "example": true
+  },
+  "ex-b3": {
+   "kind": "project",
+   "personId": "ex-tech-a",
+   "projectId": "siren30",
+   "start": "2026-10-13",
+   "end": "2026-10-14",
+   "work": "site",
+   "alloc": 100,
+   "location": "Siren site",
+   "jobNo": "WO-EX-002",
+   "weekends": false,
+   "note": "Example clash: booked while on leave",
+   "example": true
+  },
+  "ex-b4": {
+   "kind": "project",
+   "personId": "ex-tech-b",
+   "projectId": "siren30",
+   "start": "2026-10-05",
+   "end": "2026-10-09",
+   "work": "site",
+   "alloc": 100,
+   "location": "Siren site",
+   "jobNo": "",
+   "weekends": false,
+   "note": "Example: no job number, gets flagged",
+   "example": true
+  },
+  "ex-b5": {
+   "kind": "project",
+   "personId": "ex-prod",
+   "projectId": "chms",
+   "start": "2026-10-05",
+   "end": "2026-10-16",
+   "work": "production",
+   "alloc": 50,
+   "location": "Workshop",
+   "jobNo": "WO-EX-003",
+   "weekends": false,
+   "note": "Example: half-time on diorama",
+   "example": true
+  },
+  "ex-b6": {
+   "kind": "project",
+   "personId": "ex-prod",
+   "projectId": "upsi",
+   "start": "2026-10-07",
+   "end": "2026-10-09",
+   "work": "production",
+   "alloc": 75,
+   "location": "Workshop",
+   "jobNo": "WO-EX-004",
+   "weekends": false,
+   "note": "Example clash: 125% on 7–9 Oct",
+   "example": true
+  },
+  "ex-b7": {
+   "kind": "project",
+   "personId": "ex-eng",
+   "projectId": "upsi",
+   "start": "2026-10-19",
+   "end": "2026-10-21",
+   "work": "site",
+   "alloc": 100,
+   "location": "UPSI Tanjong Malim",
+   "jobNo": "WO-EX-005",
+   "weekends": false,
+   "note": "Example: site install",
+   "example": true
+  },
+  "ex-b8": {
+   "kind": "project",
+   "personId": "ex-eng",
+   "projectId": "tide8",
+   "start": "2026-10-26",
+   "end": "2026-10-28",
+   "work": "site",
+   "alloc": 100,
+   "location": "Tanjung Pengelih",
+   "jobNo": "WO-EX-006",
+   "weekends": false,
+   "note": "Example: 26 Oct is a public holiday, so only 2 working days",
+   "example": true
+  },
+  "ex-b9": {
+   "kind": "project",
+   "personId": "ex-it",
+   "projectId": "upsi",
+   "start": "2026-10-05",
+   "end": "2026-10-16",
+   "work": "office",
+   "alloc": 25,
+   "location": "HQ",
+   "jobNo": "WO-EX-007",
+   "weekends": false,
+   "note": "Example: part-time data/software setup",
+   "example": true
+  },
+  "ex-b10": {
+   "kind": "leave",
+   "personId": "ex-it",
+   "leaveType": "MC",
+   "start": "2026-10-08",
+   "end": "2026-10-08",
+   "note": "Example: medical leave",
+   "example": true
+  }
+ },
+ "holidays": {
+  "2026-01-01": {
+   "date": "2026-01-01",
+   "name": "New Year's Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-02-01": {
+   "date": "2026-02-01",
+   "name": "Thaipusam",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-02-02": {
+   "date": "2026-02-02",
+   "name": "Replacement for Thaipusam",
+   "replacement": true,
+   "tentative": false
+  },
+  "2026-02-17": {
+   "date": "2026-02-17",
+   "name": "Chinese New Year",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-02-18": {
+   "date": "2026-02-18",
+   "name": "Chinese New Year (Day 2)",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-03-07": {
+   "date": "2026-03-07",
+   "name": "Nuzul Al-Quran",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-03-20": {
+   "date": "2026-03-20",
+   "name": "Hari Raya Aidilfitri (additional holiday)",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-03-21": {
+   "date": "2026-03-21",
+   "name": "Hari Raya Aidilfitri",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-03-22": {
+   "date": "2026-03-22",
+   "name": "Hari Raya Aidilfitri (Day 2)",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-03-23": {
+   "date": "2026-03-23",
+   "name": "Replacement for Hari Raya Aidilfitri (Day 2)",
+   "replacement": true,
+   "tentative": false
+  },
+  "2026-05-01": {
+   "date": "2026-05-01",
+   "name": "Labour Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-05-27": {
+   "date": "2026-05-27",
+   "name": "Hari Raya Haji",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-05-31": {
+   "date": "2026-05-31",
+   "name": "Wesak Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-06-01": {
+   "date": "2026-06-01",
+   "name": "Agong's Birthday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-06-02": {
+   "date": "2026-06-02",
+   "name": "Replacement for Wesak Day",
+   "replacement": true,
+   "tentative": false
+  },
+  "2026-06-17": {
+   "date": "2026-06-17",
+   "name": "Awal Muharam",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-08-25": {
+   "date": "2026-08-25",
+   "name": "Prophet Muhammad's Birthday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-08-31": {
+   "date": "2026-08-31",
+   "name": "National Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-09-01": {
+   "date": "2026-09-01",
+   "name": "Selangor SUKMA 2026 special holiday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-09-16": {
+   "date": "2026-09-16",
+   "name": "Malaysia Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-10-26": {
+   "date": "2026-10-26",
+   "name": "Sultan of Selangor Silver Jubilee (special)",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-11-08": {
+   "date": "2026-11-08",
+   "name": "Deepavali",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-11-09": {
+   "date": "2026-11-09",
+   "name": "Replacement for Deepavali",
+   "replacement": true,
+   "tentative": false
+  },
+  "2026-12-11": {
+   "date": "2026-12-11",
+   "name": "Sultan of Selangor's Birthday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2026-12-25": {
+   "date": "2026-12-25",
+   "name": "Christmas Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-01-01": {
+   "date": "2027-01-01",
+   "name": "New Year's Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-01-22": {
+   "date": "2027-01-22",
+   "name": "Thaipusam",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-02-06": {
+   "date": "2027-02-06",
+   "name": "Chinese New Year",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-02-07": {
+   "date": "2027-02-07",
+   "name": "Chinese New Year (Day 2)",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-02-08": {
+   "date": "2027-02-08",
+   "name": "Replacement for Chinese New Year (Day 2)",
+   "replacement": true,
+   "tentative": false
+  },
+  "2027-02-24": {
+   "date": "2027-02-24",
+   "name": "Nuzul Al-Quran",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-03-10": {
+   "date": "2027-03-10",
+   "name": "Hari Raya Aidilfitri",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-03-11": {
+   "date": "2027-03-11",
+   "name": "Hari Raya Aidilfitri (Day 2)",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-05-01": {
+   "date": "2027-05-01",
+   "name": "Labour Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-05-17": {
+   "date": "2027-05-17",
+   "name": "Hari Raya Haji",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-05-20": {
+   "date": "2027-05-20",
+   "name": "Wesak Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-06-06": {
+   "date": "2027-06-06",
+   "name": "Awal Muharam",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-06-07": {
+   "date": "2027-06-07",
+   "name": "Agong's Birthday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-06-08": {
+   "date": "2027-06-08",
+   "name": "Replacement for Awal Muharam",
+   "replacement": true,
+   "tentative": true
+  },
+  "2027-08-15": {
+   "date": "2027-08-15",
+   "name": "Prophet Muhammad's Birthday",
+   "replacement": false,
+   "tentative": true
+  },
+  "2027-08-16": {
+   "date": "2027-08-16",
+   "name": "Replacement for Prophet Muhammad's Birthday",
+   "replacement": true,
+   "tentative": true
+  },
+  "2027-08-31": {
+   "date": "2027-08-31",
+   "name": "National Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-09-16": {
+   "date": "2027-09-16",
+   "name": "Malaysia Day",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-10-28": {
+   "date": "2027-10-28",
+   "name": "Deepavali",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-12-11": {
+   "date": "2027-12-11",
+   "name": "Sultan of Selangor's Birthday",
+   "replacement": false,
+   "tentative": false
+  },
+  "2027-12-25": {
+   "date": "2027-12-25",
+   "name": "Christmas Day",
+   "replacement": false,
+   "tentative": false
+  }
+ }
+}

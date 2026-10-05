@@ -1,0 +1,9 @@
+{
+  "name": "emt-resource-board",
+  "version": "1.0.0",
+  "description": "EMT Resource Board - team scheduling and availability",
+  "private": true,
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
