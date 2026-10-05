@@ -169,7 +169,7 @@
    "work": "site",
    "alloc": 100,
    "location": "Port Dickson",
-   "jobNo": "WO-EX-001",
+   "jobNo": "TIDE8-001",
    "weekends": false,
    "note": "Example: pre-work site visit",
    "example": true
@@ -192,7 +192,7 @@
    "work": "site",
    "alloc": 100,
    "location": "Siren site",
-   "jobNo": "WO-EX-002",
+   "jobNo": "SIREN30-001",
    "weekends": false,
    "note": "Example clash: booked while on leave",
    "example": true
@@ -220,7 +220,7 @@
    "work": "production",
    "alloc": 50,
    "location": "Workshop",
-   "jobNo": "WO-EX-003",
+   "jobNo": "CHMS-001",
    "weekends": false,
    "note": "Example: half-time on diorama",
    "example": true
@@ -234,7 +234,7 @@
    "work": "production",
    "alloc": 75,
    "location": "Workshop",
-   "jobNo": "WO-EX-004",
+   "jobNo": "UPSI-AWS-001",
    "weekends": false,
    "note": "Example clash: 125% on 7–9 Oct",
    "example": true
@@ -248,7 +248,7 @@
    "work": "site",
    "alloc": 100,
    "location": "UPSI Tanjong Malim",
-   "jobNo": "WO-EX-005",
+   "jobNo": "UPSI-AWS-002",
    "weekends": false,
    "note": "Example: site install",
    "example": true
@@ -262,7 +262,7 @@
    "work": "site",
    "alloc": 100,
    "location": "Tanjung Pengelih",
-   "jobNo": "WO-EX-006",
+   "jobNo": "TIDE8-002",
    "weekends": false,
    "note": "Example: 26 Oct is a public holiday, so only 2 working days",
    "example": true
@@ -276,7 +276,7 @@
    "work": "office",
    "alloc": 25,
    "location": "HQ",
-   "jobNo": "WO-EX-007",
+   "jobNo": "UPSI-AWS-003",
    "weekends": false,
    "note": "Example: part-time data/software setup",
    "example": true

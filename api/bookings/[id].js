@@ -1,7 +1,7 @@
 "use strict";
 const { roleOf } = require("../../lib/auth");
 const { json, unauthorized, readBody, clean, validId } = require("../../lib/http");
-const { updateRow, deleteRow } = require("../../lib/db");
+const { updateRow, deleteRow, prepareBooking } = require("../../lib/db");
 
 module.exports = async (req, res) => {
   const role = roleOf(req.headers);
@@ -12,9 +12,10 @@ module.exports = async (req, res) => {
 
   if (req.method === "PUT") {
     try {
-      const data = clean(await readBody(req));
+      let data = clean(await readBody(req));
+      data = await prepareBooking(data);
       const ok = await updateRow("bookings", id, data);
-      return json(res, { id }, ok ? 200 : 404);
+      return json(res, { id, jobNo: data.jobNo }, ok ? 200 : 404);
     } catch (e) {
       return json(res, { error: e.message }, e.message === "bad_json" || e.message === "bad_record" ? 400 : 500);
     }
