@@ -3,6 +3,22 @@
   "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/" }
+  ],
+  "functions": {
+    "api/state/index.js": { "memory": 256 },
+    "api/me/index.js": { "memory": 256 },
+    "api/export/index.js": { "memory": 256 },
+    "api/people/index.js": { "memory": 256 },
+    "api/people/[id].js": { "memory": 256 },
+    "api/projects/index.js": { "memory": 256 },
+    "api/projects/[id].js": { "memory": 256 },
+    "api/bookings/index.js": { "memory": 256 },
+    "api/bookings/[id].js": { "memory": 256 },
+    "api/holidays/index.js": { "memory": 256 },
+    "api/holidays/[id].js": { "memory": 256 }
+  },
   "headers": [
     {
       "source": "/api/(.*)",
