@@ -681,8 +681,7 @@ render();
   for(const col of ["people","projects","bookings","holidays"]){
     api.collection(col).onSnapshot(sn=>{const m={};sn.docs.forEach(d=>{m[d.id]={...d.data(),id:d.id};});S[col]=m;S.loaded[col]=true;sched();});
   }
-  try{const es=new EventSource("api/events");es.addEventListener("change",()=>load().catch(()=>{}));}catch(e){}
-  setInterval(()=>{if(!document.hidden)load().catch(()=>{});},60000);
+  setInterval(()=>{if(!document.hidden)load().catch(()=>{});},5000);
   render();
 })();
 })();
