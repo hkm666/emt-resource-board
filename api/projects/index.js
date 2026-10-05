@@ -5,14 +5,14 @@ const { insertRow } = require("../../lib/db");
 
 module.exports = async (req, res) => {
   const role = roleOf(req.headers);
-  if (!role) return unauthorized();
-  if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
-  if (role !== "editor") return json({ error: "view_only" }, 403);
+  if (!role) return unauthorized(res);
+  if (req.method !== "POST") return json(res, { error: "method_not_allowed" }, 405);
+  if (role !== "editor") return json(res, { error: "view_only" }, 403);
   try {
     const data = clean(await readBody(req));
     const id = await insertRow("projects", data);
-    return json({ id }, 201);
+    return json(res, { id }, 201);
   } catch (e) {
-    return json({ error: e.message }, e.message === "bad_json" || e.message === "bad_record" ? 400 : 500);
+    return json(res, { error: e.message }, e.message === "bad_json" || e.message === "bad_record" ? 400 : 500);
   }
 };

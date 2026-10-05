@@ -5,11 +5,11 @@ const { loadState } = require("../lib/db");
 
 module.exports = async (req, res) => {
   const role = roleOf(req.headers);
-  if (!role) return unauthorized();
+  if (!role) return unauthorized(res);
   try {
     const state = await loadState();
-    return json(state);
+    return json(res, state);
   } catch (e) {
-    return json({ error: e.message }, 500);
+    return json(res, { error: e.message }, 500);
   }
 };
