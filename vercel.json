@@ -4,6 +4,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/api/state", "destination": "/api/state/index.js" },
+    { "source": "/api/me", "destination": "/api/me/index.js" },
+    { "source": "/api/export", "destination": "/api/export/index.js" },
     { "source": "/", "destination": "/public/index.html" }
   ],
   "headers": [
