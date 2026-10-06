@@ -10,6 +10,7 @@ const handlers = {
   me: require("./api/me/index.js"),
   state: require("./api/state/index.js"),
   exportDb: require("./api/export/index.js"),
+  testEmail: require("./api/test-email/index.js"),
   peopleList: require("./api/people/index.js"),
   peopleId: require("./api/people/[id].js"),
   projectsList: require("./api/projects/index.js"),
@@ -18,11 +19,14 @@ const handlers = {
   bookingsId: require("./api/bookings/[id].js"),
   holidaysList: require("./api/holidays/index.js"),
   holidaysId: require("./api/holidays/[id].js"),
+  jobsList: require("./api/jobs/index.js"),
+  jobsId: require("./api/jobs/[id].js"),
+  jobStatus: require("./api/job-status/[jobNo].js"),
 };
 
-const COLLECTIONS = ["people", "projects", "bookings", "holidays"];
-const listHandlers = { people: handlers.peopleList, projects: handlers.projectsList, bookings: handlers.bookingsList, holidays: handlers.holidaysList };
-const idHandlers = { people: handlers.peopleId, projects: handlers.projectsId, bookings: handlers.bookingsId, holidays: handlers.holidaysId };
+const COLLECTIONS = ["people", "projects", "bookings", "holidays", "jobs"];
+const listHandlers = { people: handlers.peopleList, projects: handlers.projectsList, bookings: handlers.bookingsList, holidays: handlers.holidaysList, jobs: handlers.jobsList };
+const idHandlers = { people: handlers.peopleId, projects: handlers.projectsId, bookings: handlers.bookingsId, holidays: handlers.holidaysId, jobs: handlers.jobsId };
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -32,6 +36,13 @@ const server = http.createServer(async (req, res) => {
     if (p === "/api/me") return handlers.me(req, res);
     if (p === "/api/state") return handlers.state(req, res);
     if (p === "/api/export") return handlers.exportDb(req, res);
+    if (p === "/api/test-email") return handlers.testEmail(req, res);
+
+    const jsm = p.match(/^\/api\/job-status\/([^/]+)$/);
+    if (jsm) {
+      req.query = { jobNo: decodeURIComponent(jsm[1]) };
+      return handlers.jobStatus(req, res);
+    }
 
     const m = p.match(/^\/api\/([a-z]+)(?:\/([^/]+))?$/);
     if (m && COLLECTIONS.includes(m[1])) {

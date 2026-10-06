@@ -1,7 +1,8 @@
 "use strict";
 const { roleOf } = require("../../lib/auth");
 const { json, unauthorized, readBody, clean, validId } = require("../../lib/http");
-const { updateRow, deleteRow, prepareBooking } = require("../../lib/db");
+const { updateRow, deleteRow, prepareBooking, loadState, getRow } = require("../../lib/db");
+const { preview, notifyBookingChanged } = require("../../lib/mailer");
 
 module.exports = async (req, res) => {
   const role = roleOf(req.headers);
@@ -12,18 +13,33 @@ module.exports = async (req, res) => {
 
   if (req.method === "PUT") {
     try {
+      const before = await getRow("bookings", id);
       let data = clean(await readBody(req));
       data = await prepareBooking(data);
-      const ok = await updateRow("bookings", id, data);
-      return json(res, { id, jobNo: data.jobNo }, ok ? 200 : 404);
+      await updateRow("bookings", id, data);
+      const state = await loadState();
+      const np = preview(data, state);
+      setImmediate(async () => {
+        const s = await loadState();
+        await notifyBookingChanged(id, before, s);
+      });
+      return json(res, { id, jobNo: data.jobNo, notify: np });
     } catch (e) {
       return json(res, { error: e.message }, e.message === "bad_json" || e.message === "bad_record" ? 400 : 500);
     }
   }
   if (req.method === "DELETE") {
     try {
-      const ok = await deleteRow("bookings", id);
-      return json(res, { id }, ok ? 200 : 404);
+      const before = await getRow("bookings", id);
+      await deleteRow("bookings", id);
+      if (before) {
+        setImmediate(async () => {
+          const s = await loadState();
+          s.bookings[id] = null;
+          await notifyBookingChanged(id, before, s);
+        });
+      }
+      return json(res, { id });
     } catch (e) {
       return json(res, { error: e.message }, 500);
     }

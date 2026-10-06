@@ -228,6 +228,51 @@ tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
 .sperson .ncell{padding-block:3px}
 @media (max-width:640px){.sched .ncell{width:180px;flex-basis:180px}}
 .sproj .tl{min-height:56px}
+.teamlist{display:grid;gap:6px}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) 150px 34px;gap:8px;align-items:center;border:1px solid var(--line);border-radius:6px;padding:4px 4px 4px 10px;font-size:13.5px;color:var(--ink);font-weight:500}
+.trow select{height:30px}
+.trow .muted{font-size:12px;font-weight:400}
+.tadd{display:grid;grid-template-columns:minmax(0,1fr) 150px auto;gap:8px;align-items:center}
+@media (max-width:520px){.trow{grid-template-columns:minmax(0,1fr) 34px}.trow select{grid-column:1/2}.tadd{grid-template-columns:1fr}}
+.chip.role{background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+/* my bookings */
+.mylist{display:grid;gap:12px}
+.mycard{display:grid;grid-template-columns:72px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--pc,var(--hatch));border-radius:8px;overflow:hidden}
+.mycard.leave{border-left-color:var(--hatch);background:repeating-linear-gradient(135deg,var(--surface) 0 10px,var(--surface-2) 10px 14px)}
+.mydate{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:14px 4px;background:var(--surface-2);border-right:1px solid var(--line-2);line-height:1.1}
+.mydate b{font-family:var(--f-display);font-size:30px}
+.mydate span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.mydate small{font-size:11px;color:var(--muted);margin-top:2px}
+.mybody{padding:12px 14px;min-width:0}
+.mytop{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:8px;font-size:15px}
+.mytop .muted{font-size:13px}
+.mst{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:var(--line-2);color:var(--muted)}
+.mst.now{background:var(--ok-soft);color:var(--ok)} .mst.soon{background:var(--gold-soft);color:var(--gold-ink)}
+.myrow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;padding:4px 0;font-size:13.5px;border-top:1px solid var(--line-2)}
+.myrow>span{color:var(--muted);font-size:12px;padding-top:1px}
+.mytrip{margin-top:6px;background:var(--surface-2);border-radius:6px;padding:4px 10px}
+.mytrip .myrow:first-child{border-top:0}
+.pre{white-space:pre-wrap}
+.myempty{margin-top:8px;font-size:12.5px;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:7px 10px}
+.tripbox{border:1px solid var(--line);border-radius:6px;padding:0 12px}
+.tripbox summary{cursor:pointer;padding:10px 0;font-size:13px;font-weight:600;color:var(--ink)}
+.tripbox[open]{padding-bottom:12px}
+.tripbox .tgrid{display:grid;gap:10px}
+.tripbox textarea{min-height:64px;font-family:var(--f-body);font-size:13.5px}
+@media (max-width:560px){.mycard{grid-template-columns:56px minmax(0,1fr)}.myrow{grid-template-columns:1fr;gap:0}}
+.stats div.stat{cursor:default}
+.itag{font-size:9.5px;font-weight:700;letter-spacing:.06em;background:var(--brand-soft);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:0 4px;vertical-align:middle;flex:0 0 auto}
+.jst{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:9px;white-space:nowrap;background:var(--line-2);color:var(--muted)}
+.jst.inprogress{background:var(--gold-soft);color:var(--gold-ink)}
+.jst.done{background:var(--ok-soft);color:var(--ok)}
+.jst.reported{background:var(--brand);color:var(--brand-ink)}
+.jst.stale{background:var(--bad-soft);color:var(--bad)}
+.sjobs{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.jchip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:1px 3px 1px 8px;font-family:var(--f-mono);font-size:11px;cursor:pointer;color:var(--ink)}
+.jchip:hover{border-color:var(--muted)}
+.joblist{display:grid;gap:4px;max-height:220px;overflow:auto}
+.jrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;border:1px solid var(--line-2);border-radius:6px;padding:6px 10px;font-size:13px;color:var(--ink);font-weight:400}
+.bk.isdone{opacity:.55}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -239,6 +284,7 @@ tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
   <div class="navband"><div class="top-in"><nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-view="board" aria-selected="true">Board</button>
     <button class="tab" role="tab" data-view="schedule">Project schedule</button>
+    <button class="tab" role="tab" data-view="my">My bookings</button>
     <button class="tab" role="tab" data-view="find">Who's free</button>
     <button class="tab" role="tab" data-view="projects">Projects</button>
     <button class="tab" role="tab" data-view="people">People</button>
@@ -249,6 +295,7 @@ tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
   <div class="banner" id="banner" hidden></div>
   <section id="v-board"></section>
   <section id="v-schedule" hidden></section>
+  <section id="v-my" hidden></section>
   <section id="v-find" hidden></section>
   <section id="v-projects" hidden></section>
   <section id="v-people" hidden></section>
@@ -263,6 +310,7 @@ tr.click{cursor:pointer} tr.click:hover td{background:var(--surface-2)}
 /* ---------- constants ---------- */
 const ARMS=["Field Operations","Production","Engineering","IT Division","Project Management"];
 const SKILLS=["AWOS/RVR","AWS / Surface Met","RTU / Telemetry","Siren / EWS","Hydrology","Seismic","Air Quality","Civil / Mast","Electrical / Solar","Networking / Comms","Software / IT","Calibration","QC / Testing","Fabrication","Documentation","Project Mgmt","Driving (site)"];
+const TEAMROLES=["Project Engineer","Site Engineer","Technician","Production","IT / Software","QC","Support","Team member"];
 const STATUSES=["Active","Proposal","Tender","On Hold","Closed"];
 const COLORS=["#2F6B4F","#3B6EA5","#8E5A9B","#B5562B","#2C8585","#6B7A2A","#A23E5A","#4F5D9E","#9A6B1F","#3E7A3A","#5E6B73","#B0473A"];
 const WORK={site:"On site",office:"Office",production:"Workshop / Production",remote:"Remote / Travel"};
@@ -271,10 +319,10 @@ const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 /* ---------- state ---------- */
-const S={people:{},projects:{},bookings:{},holidays:{},view:"board",weeks:2,start:mondayOf(todayISO()),
+const S={people:{},projects:{},bookings:{},holidays:{},jobs:{},view:"board",weeks:2,start:mondayOf(todayISO()),
   f:{q:"",arm:"",skill:"",project:""},find:{from:todayISO(),to:addDays(todayISO(),4),skills:[],arm:"",min:50},
   pstatus:"open",db:null,live:false,loaded:{people:false,projects:false,bookings:false,holidays:false}};
-try{const w=localStorage.getItem("emtrb.weeks");if(w)S.weeks=+w||2;const v=localStorage.getItem("emtrb.view");if(v)S.view=v;}catch(e){}
+try{const w=localStorage.getItem("emtrb.weeks");if(w)S.weeks=+w||2;const v=localStorage.getItem("emtrb.view");if(v){S.view=v;S._viewStored=true;}}catch(e){}
 
 /* ---------- date helpers (ISO yyyy-mm-dd, tz-safe) ---------- */
 function todayISO(){const d=new Date();return iso(d.getFullYear(),d.getMonth(),d.getDate());}
@@ -296,7 +344,9 @@ const $=s=>document.querySelector(s);
 function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function initials(n){return String(n||"?").split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0].toUpperCase()).join("");}
 function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,2600);}
-const people=()=>Object.values(S.people).filter(p=>p.active!==false).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+const isIntern=p=>p&&p.type==="Intern";
+const internEnded=p=>isIntern(p)&&p.internEnd&&p.internEnd<todayISO();
+const people=()=>Object.values(S.people).filter(p=>p.active!==false&&!internEnded(p)).sort((a,b)=>(a.short||a.name||"").localeCompare(b.short||b.name||""));
 const projects=()=>Object.values(S.projects).sort((a,b)=>(a.code||"").localeCompare(b.code||""));
 const bookings=()=>Object.values(S.bookings).filter(b=>b.start&&b.end&&b.personId);
 function proj(id){return S.projects[id];}
@@ -325,7 +375,7 @@ function rangeLoad(pid,from,to){
 
 /* ---------- issues engine ---------- */
 function computeIssues(){
-  const from=todayISO(),to=addDays(from,27);const out={over:[],leave:[],site:[],nojob:[],nopm:[],unstaffed:[],idle:[]};
+  const from=todayISO(),to=addDays(from,27);const out={over:[],leave:[],site:[],nojob:[],nopm:[],unstaffed:[],idle:[],intern:[],stale:[],noreport:[]};
   for(const p of people()){
     let overDays=[],lvDays=[],siteDays=[];
     for(const d of days(from,to)){ const i=dayInfo(p.id,d);
@@ -339,18 +389,23 @@ function computeIssues(){
     if(rl.pct===0&&rl.leaveDays<rl.n)out.idle.push({p});
   }
   for(const b of bookings()) if(b.kind!=="leave"&&b.end>=from&&!String(b.jobNo||"").trim()) out.nojob.push({b});
+  for(const jn of allJobNos()){const i=jobInfo(jn);if(!i)continue;if(i.status==="stale"||(i.status!=="done"&&i.status!=="reported"&&i.end<from))out.stale.push(i);else if(i.status==="done")out.noreport.push(i);}
+  for(const b of bookings()){const u=person(b.personId);if(!isIntern(u)||b.kind==="leave"||b.end<from)continue;
+    if(u.internEnd&&b.end>u.internEnd){out.intern.push({b,why:"booked after internship ends on "+fmt(u.internEnd)});continue;}
+    if(b.work==="site"){const staffWith=bookings().some(x=>x.id!==b.id&&x.kind!=="leave"&&x.work==="site"&&x.jobNo&&x.jobNo===b.jobNo&&!isIntern(person(x.personId))&&x.start<=b.start&&x.end>=b.end);
+      if(!staffWith)out.intern.push({b,why:"on site without a staff member on the same job for the whole period"});}}
   for(const pr of projects()){ if(pr.status!=="Active")continue;
     if(!pr.pmId||!S.people[pr.pmId])out.nopm.push({pr});
     const has=bookings().some(b=>b.projectId===pr.id&&b.end>=from&&b.start<=addDays(from,13));
     if(!has)out.unstaffed.push({pr});}
   return out;
 }
-function issueCount(I){return I.over.length+I.leave.length+I.site.length+I.nojob.length+I.nopm.length;}
+function issueCount(I){return I.over.length+I.leave.length+I.site.length+I.nojob.length+I.nopm.length+I.intern.length+I.stale.length+I.noreport.length;}
 
 /* ---------- render: dispatcher ---------- */
 function render(){
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.view===S.view?"true":"false"));
-  ["board","schedule","find","projects","people","issues"].forEach(v=>$("#v-"+v).hidden=v!==S.view);
+  ["board","schedule","my","find","projects","people","issues"].forEach(v=>$("#v-"+v).hidden=v!==S.view);
   const I=computeIssues();const n=issueCount(I);const bd=$("#issueBadge");bd.textContent=n;bd.className="badge"+(n?"":" zero");
   const ban=$("#banner");
   document.body.classList.toggle("ro",!!S.readonly);
@@ -360,7 +415,7 @@ function render(){
   if(exN)parts.push(`<b>Example data is showing.</b> ${exN} records marked EXAMPLE (dashed outline) show how the board works, including deliberate clashes so the Issues tab has something to show.${S.readonly?"":' <button class="btn" id="exRm" type="button">Remove all examples</button>'}`);
   ban.hidden=!parts.length;ban.innerHTML=parts.join("<br>");
   const xr=$("#exRm");if(xr)xr.onclick=()=>{if(!xr.classList.contains("armed")){xr.classList.add("armed","danger");xr.textContent="Click again to remove "+exN+" example records";return;}removeExamples();};
-  ({board:renderBoard,schedule:renderSchedule,find:renderFind,projects:renderProjects,people:renderPeople,issues:renderIssues})[S.view](I);
+  ({board:renderBoard,schedule:renderSchedule,my:renderMy,find:renderFind,projects:renderProjects,people:renderPeople,issues:renderIssues})[S.view](I);
 }
 
 /* ---------- BOARD ---------- */
@@ -368,7 +423,7 @@ function renderBoard(I){
   const el=$("#v-board");const N=S.weeks*7;const from=S.start,to=addDays(from,N-1);const ds=days(from,to);const today=todayISO();
   const ppl=people().filter(p=>{
     const f=S.f;if(f.arm&&p.arm!==f.arm)return false;if(f.skill&&!(p.skills||[]).includes(f.skill))return false;
-    if(f.q){const q=f.q.toLowerCase();if(!((p.name||"").toLowerCase().includes(q)||(p.role||"").toLowerCase().includes(q)))return false;}
+    if(f.q){const q=f.q.toLowerCase();if(!((p.name||"")+" "+(p.short||"")+" "+(p.role||"")+" "+(p.staffNo||"")).toLowerCase().includes(q))return false;}
     if(f.project&&!bookings().some(b=>b.personId===p.id&&b.projectId===f.project&&b.end>=from&&b.start<=to))return false;
     return true;});
   // summary
@@ -390,7 +445,7 @@ function renderBoard(I){
     <input class="ctl" type="search" id="fq" placeholder="Search name or role" value="${esc(S.f.q)}">
     ${sel("farm",ARMS.map(a=>[a,a]),S.f.arm,"All teams")}
     ${sel("fskill",SKILLS.map(a=>[a,a]),S.f.skill,"Any skill")}
-    ${sel("fproj",projects().map(p=>[p.id,p.code]),S.f.project,"All projects")}
+    ${sel("fproj",projects().map(p=>[p.id,p.label?p.label+" · "+p.code:p.code]),S.f.project,"All projects")}
     <button class="btn edit-only" id="holBtn">Holidays</button><button class="btn primary edit-only" id="addBk">+ Assign</button>
   </div>`;
   if(!people().length){
@@ -410,14 +465,14 @@ function renderBoard(I){
       const lanes=[];bs.forEach(b=>{let L=0;while(lanes[L]&&lanes[L]>=b.start)L++;lanes[L]=b.end;b._lane=L;});
       const H=Math.max(1,lanes.length)*parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--lane")||22)+10;
       const rl=rangeLoad(p.id,from,to);const cls=rl.over?"over":rl.pct>=90?"hi":"";
-      h+=`<div class="brow" style="min-height:${H}px"><div class="ncell"><div class="pname" data-person="${p.id}"><span class="t">${esc(p.name)}</span>${p.example?'<span class="extag">EXAMPLE</span>':""}</div><div class="prole">${esc(p.role||"")}</div><div class="meter ${cls}" title="${rl.over?rl.over+" day(s) over 100%":""}"><i><b style="width:${Math.min(rl.pct,100)}%"></b></i><span class="num">${rl.pct}%</span></div></div>`;
+      h+=`<div class="brow" style="min-height:${H}px"><div class="ncell"><div class="pname" data-person="${p.id}" title="${esc(p.name)}${p.staffNo?" · "+esc(p.staffNo):""}"><span class="t">${esc(p.short||p.name)}</span>${isIntern(p)?'<span class="itag" title="Intern'+(p.internEnd?" until "+fmt(p.internEnd):"")+'">INTERN</span>':""}${p.example?'<span class="extag">EXAMPLE</span>':""}</div><div class="prole">${esc(p.role||"")}</div><div class="meter ${cls}" title="${rl.over?rl.over+" day(s) over 100%":""}"><i><b style="width:${Math.min(rl.pct,100)}%"></b></i><span class="num">${rl.pct}%</span></div></div>`;
       h+=`<div class="tl" data-pid="${p.id}" style="width:${W};min-height:${H}px">`;
       ds.forEach((d,i)=>{const inf=isWE(d)?null:dayInfo(p.id,d);h+=`<div class="dc${isWE(d)?" we":hol(d)?" hol":""}${d===today?" today":""}${i&&dow(d)===1?" wk":""}${inf&&!inf.leave&&inf.load>100?" over":""}" style="left:calc(var(--day) * ${i})"></div>`;});
       for(const b of bs){
         const s=b.start<from?from:b.start,e=b.end>to?to:b.end;const i0=diff(from,s),span=diff(s,e)+1;
         const top=`calc(5px + var(--lane) * ${b._lane})`;const left=`calc(var(--day) * ${i0} + 2px)`;const wd=`calc(var(--day) * ${span} - 4px)`;
         if(b.kind==="leave"){h+=`<button class="bk leave${b.example?" ex":""}" data-bk="${b.id}" style="top:${top};left:${left};width:${wd}" title="${esc(LEAVE[b.leaveType]||"Leave")} ${fmt(b.start)}–${fmt(b.end)}">${esc(b.leaveType||"Leave")} ${span>2?esc(LEAVE[b.leaveType]||""):""}</button>`;continue;}
-        const pr=proj(b.projectId);const lab=pr?pr.code:"(no project)";
+        const pr=proj(b.projectId);const lab=pr?(pr.label||pr.code):"(no project)";
         const flag=!String(b.jobNo||"").trim();
         h+=`<button class="bk${Number(b.alloc||100)<100?" part":""}${b.example?" ex":""}" data-bk="${b.id}" style="top:${top};left:${left};width:${wd};background:${pColor(pr)}" title="${esc(lab)} · ${esc(WORK[b.work]||"")}${b.location?" · "+esc(b.location):""} · ${b.alloc||100}% · ${fmt(b.start)}–${fmt(b.end)}${flag?" · NO JOB NO.":" · Job "+esc(b.jobNo)}">${b.work==="site"?'<span class="site">SITE</span>':""}${esc(lab)}${Number(b.alloc||100)<100?" "+b.alloc+"%":""}${span>2&&b.location?' <span style="opacity:.8;font-weight:400">· '+esc(b.location)+"</span>":""}${flag?' <span title="No job number">⚑</span>':""}</button>`;
       }
@@ -477,7 +532,7 @@ function projSignal(p,sp){
 function renderSchedule(){
   const el=$("#v-schedule");const W=S.sw||13;const from=S.sstart||mondayOf(addDays(todayISO(),-7));const N=W*7;const to=addDays(from,N-1);const ds=days(from,to);const t=todayISO();
   const dayPx=W<=6?30:W<=13?16:9;
-  const st=S.sstatus||"open";const list=projects().filter(p=>(st==="all"||(st==="open"?p.status!=="Closed":p.status===st))&&(!S.sq||((p.code+" "+p.name+" "+(p.client||"")).toLowerCase().includes(S.sq.toLowerCase()))));
+  const st=S.sstatus||"open";const list=projects().filter(p=>(st==="all"||(st==="open"?p.status!=="Closed":p.status===st))&&(!S.sq||((p.code+" "+(p.label||"")+" "+p.name+" "+(p.client||"")+" "+(p.endUser||"")+" "+(p.poNo||"")).toLowerCase().includes(S.sq.toLowerCase()))));
   const months=[];ds.forEach((d,i)=>{const k=d.slice(0,7);if(!months.length||months[months.length-1].k!==k)months.push({k,i,n:0});months[months.length-1].n++;});
   const x=i=>`calc(var(--sday) * ${i})`;
   let h=`<p class="rule"><b>How to read it:</b> the light band is the planned project period, the solid bars underneath are who is booked on it and when. The PM keeps start and end dates current; status is reviewed at the Monday meeting.</p>
@@ -500,12 +555,14 @@ function renderSchedule(){
   const bg=()=>{let g="";ds.forEach((d,i)=>{if(isWE(d)||hol(d))g+=`<div class="sbg${hol(d)&&!isWE(d)?" hol":""}" style="left:${x(i)};width:var(--sday)"></div>`;else if(dow(d)===1)g+=`<div class="sbg wk" style="left:${x(i)};width:0"></div>`;});return g;};
   for(const p of list){
     const sp=projSpan(p);const sig=projSignal(p,sp);const pm=person(p.pmId);const col=pColor(p);
-    const ppl=[...new Set(sp.bs.map(b=>b.personId))].map(person).filter(Boolean).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+    const roleOf={};teamOf(p).forEach(t=>roleOf[t.personId]=t.role||"Team member");if(p.pmId&&person(p.pmId))roleOf[p.pmId]="PM";
+    const ppl=[...new Set(sp.bs.map(b=>b.personId).concat(Object.keys(roleOf)))].map(person).filter(Boolean).sort((a,b)=>(a.id===p.pmId?-1:b.id===p.pmId?1:0)||(a.name||"").localeCompare(b.name||""));
     const jobs=Object.keys(jobsOf(p.id));const open=!(S.scollapsed||{})[p.id];
     let elapsed="";if(p.start&&p.end&&p.end>=p.start){const tot=diff(p.start,p.end)+1,done=Math.max(0,Math.min(tot,diff(p.start,t)+1));elapsed=Math.round(done*100/tot);}
-    h+=`<div class="brow sproj"><div class="ncell"><button class="sname" data-tog="${p.id}" aria-expanded="${open}"><span class="caret">${open?"▾":"▸"}</span><span class="swatch" style="background:${col}"></span><b>${esc(p.code)}</b><span class="pill ${String(p.status||"").replace(/\s/g,"")}">${esc(p.status||"—")}</span></button>
+    h+=`<div class="brow sproj"><div class="ncell"><button class="sname" data-tog="${p.id}" aria-expanded="${open}"><span class="caret">${open?"▾":"▸"}</span><span class="swatch" style="background:${col}"></span><b>${esc(p.label||p.code)}</b>${p.label?`<span class="muted num" style="font-size:11px;font-weight:400">${esc(p.code)}</span>`:""}<span class="pill ${String(p.status||"").replace(/\s/g,"")}">${esc(p.status||"—")}</span></button>
       <div class="prole" title="${esc(p.name)}">${esc(p.name)}${p.client?" · "+esc(p.client):""}</div>
-      <div class="smeta"><span class="${sig[0]}">${esc(sig[1])}</span> · PM ${pm?esc(pm.name):'<span class="bad">none</span>'} · ${ppl.length} ${ppl.length===1?"person":"people"} · ${jobs.length} job${jobs.length===1?"":"s"}</div></div>
+      <div class="smeta"><span class="${sig[0]}">${esc(sig[1])}</span> · PM ${pm?esc(pm.name):'<span class="bad">none</span>'} · ${ppl.length} ${ppl.length===1?"person":"people"} on team · ${jobs.length} job${jobs.length===1?"":"s"}${jobs.length?` (${jobs.filter(j=>{const i=jobInfo(j);return i&&(i.status==="done"||i.status==="reported");}).length} done)`:""}</div>
+      ${jobs.length?`<div class="sjobs">${jobs.sort().slice(-6).map(j=>`<button class="jchip" data-jst="${esc(j)}" title="Update status of ${esc(j)}">${esc(j.startsWith(p.code+"-")?"#"+j.slice(p.code.length+1):j)} ${statusPill(jobInfo(j))}</button>`).join("")}${jobs.length>6?`<span class="muted" style="font-size:11px">+${jobs.length-6} more</span>`:""}</div>`:""}</div>
       <div class="tl stl" data-proj="${p.id}" style="width:${x(N)}">${bg()}${todayLine}`;
     if(sp.s&&sp.e&&sp.e>=from&&sp.s<=to){const s=sp.s<from?from:sp.s,e=sp.e>to?to:sp.e;
       h+=`<button class="splan${sp.planned?"":" guess"}" data-proj="${p.id}" style="left:${x(diff(from,s))};width:${x(diff(s,e)+1)};--pc:${col}" title="${esc(p.code)} · ${sp.planned?"planned":"from bookings (no planned dates)"} ${fmt(sp.s)} – ${fmt(sp.e)}${elapsed!==""?" · "+elapsed+"% of time used":""}">${elapsed!==""?`<i style="width:${Math.min(100,elapsed)}%"></i>`:""}<span>${fmt(sp.s)} – ${fmt(sp.e)}${sp.planned?"":" (from bookings)"}${elapsed!==""?" · "+elapsed+"% time used":""}</span></button>`;
@@ -513,17 +570,19 @@ function renderSchedule(){
     else if(!sp.s)h+=`<div class="snodate">No dates and no bookings yet</div>`;
     h+=`</div></div>`;
     if(open){
-      if(!ppl.length)h+=`<div class="brow sperson"><div class="ncell"><span class="muted" style="font-size:12px;padding-left:22px">Nobody booked on this project</span></div><div class="tl stl" style="width:${x(N)}">${bg()}${todayLine}</div></div>`;
+      if(!ppl.length)h+=`<div class="brow sperson"><div class="ncell"><span class="muted" style="font-size:12px;padding-left:22px">No team assigned and nobody booked</span></div><div class="tl stl" style="width:${x(N)}">${bg()}${todayLine}</div></div>`;
       for(const u of ppl){
         const bs=sp.bs.filter(b=>b.personId===u.id&&b.end>=from&&b.start<=to).sort((a,b)=>a.start<b.start?-1:1);
         const lanes=[];bs.forEach(b=>{let L=0;while(lanes[L]&&lanes[L]>=b.start)L++;lanes[L]=b.end;b._lane=L;});
         const H=Math.max(1,lanes.length)*20+8;
         const lv=bookings().filter(b=>b.personId===u.id&&b.kind==="leave"&&b.end>=from&&b.start<=to);
-        h+=`<div class="brow sperson" style="min-height:${H}px"><div class="ncell"><div class="pname" data-person="${u.id}" style="padding-left:22px"><span class="t">${esc(u.name)}</span>${u.example?'<span class="extag">EXAMPLE</span>':""}${u.id===p.pmId?'<span class="chip gold">PM</span>':""}</div></div>
+        h+=`<div class="brow sperson" style="min-height:${H}px"><div class="ncell"><div class="pname" data-person="${u.id}" style="padding-left:22px" title="${esc(u.name)}"><span class="t">${esc(u.short||u.name)}</span>${isIntern(u)?'<span class="itag" title="Intern'+(u.internEnd?" until "+fmt(u.internEnd):"")+'">INTERN</span>':""}${u.example?'<span class="extag">EXAMPLE</span>':""}${u.id===p.pmId?'<span class="chip gold">PM</span>':roleOf[u.id]?`<span class="chip role">${esc(roleOf[u.id])}</span>`:""}</div></div>
         <div class="tl stl" data-pid="${u.id}" data-projfor="${p.id}" style="width:${x(N)};min-height:${H}px">${bg()}${todayLine}`;
+        if(!bs.length)h+=`<div class="snodate" style="top:6px;font-size:11.5px">Assigned · not booked in this period</div>`;
         for(const b of lv){const s=b.start<from?from:b.start,e=b.end>to?to:b.end;h+=`<div class="sleave" style="left:${x(diff(from,s))};width:${x(diff(s,e)+1)}" title="${esc(LEAVE[b.leaveType]||"Leave")} ${fmt(b.start)}–${fmt(b.end)}"></div>`;}
         for(const b of bs){const s=b.start<from?from:b.start,e=b.end>to?to:b.end;const span=diff(s,e)+1;
-          h+=`<button class="bk${Number(b.alloc||100)<100?" part":""}${b.example?" ex":""}" data-bk="${b.id}" style="top:calc(4px + 20px * ${b._lane});height:17px;left:calc(var(--sday) * ${diff(from,s)} + 1px);width:calc(var(--sday) * ${span} - 2px);background:${col}" title="${esc(b.jobNo||"No job number")} · ${esc(WORK[b.work]||"")}${b.location?" · "+esc(b.location):""} · ${b.alloc||100}% · ${fmt(b.start)}–${fmt(b.end)}">${span*dayPx>60?(b.work==="site"?'<span class="site">SITE</span>':"")+esc(b.jobNo||"⚑ no job no."):""}</button>`;}
+          const ji=jobInfo(b.jobNo);const dn=ji&&(ji.status==="done"||ji.status==="reported");
+          h+=`<button class="bk${Number(b.alloc||100)<100?" part":""}${b.example?" ex":""}${dn?" isdone":""}" data-bk="${b.id}" style="top:calc(4px + 20px * ${b._lane});height:17px;left:calc(var(--sday) * ${diff(from,s)} + 1px);width:calc(var(--sday) * ${span} - 2px);background:${col}" title="${esc(b.jobNo||"No job number")} · ${esc(WORK[b.work]||"")}${b.location?" · "+esc(b.location):""} · ${b.alloc||100}% · ${fmt(b.start)}–${fmt(b.end)}">${span*dayPx>60?(b.work==="site"?'<span class="site">SITE</span>':"")+(dn?"✓ ":"")+esc(b.jobNo||"⚑ no job no."):""}</button>`;}
         h+=`</div></div>`;
       }
     }
@@ -541,12 +600,95 @@ function wireSched(el,from,ds){
   el.querySelectorAll("[data-ss]").forEach(b=>b.onclick=()=>{S.sstatus=b.dataset.ss;render();});
   const q=el.querySelector("#sq");if(q)q.addEventListener("input",e=>{S.sq=e.target.value;clearTimeout(wireSched._t);wireSched._t=setTimeout(()=>{render();const z=$("#sq");if(z){z.focus();z.setSelectionRange(z.value.length,z.value.length);}},250);});
   el.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{S.scollapsed=S.scollapsed||{};S.scollapsed[b.dataset.tog]=!S.scollapsed[b.dataset.tog];render();});
+  el.querySelectorAll("[data-jst]").forEach(b=>b.onclick=e=>{e.stopPropagation();if(canStatus())statusDialog(b.dataset.jst);});
   el.querySelectorAll(".splan[data-proj]").forEach(b=>b.onclick=e=>{e.stopPropagation();projectDialog(S.projects[b.dataset.proj]);});
   el.querySelectorAll("[data-bk]").forEach(b=>b.onclick=e=>{e.stopPropagation();bookingDialog(S.bookings[b.dataset.bk]);});
   el.querySelectorAll("[data-person]").forEach(b=>b.onclick=()=>personDialog(S.people[b.dataset.person]));
   el.querySelectorAll(".stl[data-pid]").forEach(tl=>tl.addEventListener("click",e=>{
     if(S.readonly||e.target.closest(".bk"))return;const r=tl.getBoundingClientRect();const i=Math.max(0,Math.min(ds.length-1,Math.floor((e.clientX-r.left)/(r.width/ds.length))));
     bookingDialog({personId:tl.dataset.pid,projectId:tl.dataset.projfor,start:ds[i],end:ds[i]});}));
+}
+
+/* ---------- JOB STATUS ---------- */
+const JSTATUS=[["planned","Planned"],["inprogress","In progress"],["done","Done"],["reported","Report submitted"]];
+const JSLABEL=Object.fromEntries(JSTATUS);
+function jobInfo(jn){
+  if(!jn)return null;const bs=bookings().filter(b=>b.jobNo===jn&&b.kind!=="leave");if(!bs.length&&!S.jobs[jn])return null;
+  const start=bs.length?bs.reduce((a,b)=>a<b.start?a:b.start,bs[0].start):"",end=bs.length?bs.reduce((a,b)=>a>b.end?a:b.end,bs[0].end):"";
+  const j=S.jobs[jn]||{};const t=todayISO();let st=j.status,derived=false;
+  if(!st){derived=true;st=!start||t<start?"planned":t<=end?"inprogress":"stale";}
+  return {jn,bs,start,end,people:[...new Set(bs.map(b=>b.personId))].map(person).filter(Boolean),status:st,derived,report:j.reportRef||"",statusAt:j.statusAt||"",projectId:(bs[0]&&bs[0].projectId)||j.projectId};
+}
+function statusPill(i){if(!i)return "";const lab=i.status==="stale"?"Needs update":JSLABEL[i.status];
+  return `<span class="jst ${i.status}" title="${i.derived?"Not updated yet: worked out from the dates":"Updated "+(i.statusAt?fmt(i.statusAt.slice(0,10)):"")}${i.report?" · "+esc(i.report):""}">${i.status==="done"||i.status==="reported"?"✓ ":""}${esc(lab)}${i.derived&&i.status!=="stale"?" (auto)":""}</span>`;}
+const canStatus=()=>S.live?(!S.readonly||!!S.hosted):true;
+async function setJobStatus(jn,status,reportRef){
+  const rec={status,reportRef:reportRef||"",statusAt:new Date().toISOString()};
+  if(S.hosted){try{const r=await fetch("api/job-status/"+encodeURIComponent(jn),{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify(rec)});
+      if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||("server answered "+r.status));}}catch(e){toast("Status not saved: "+e.message);return false;}}
+  else{const old=S.jobs[jn]||{jobNo:jn,projectId:(bookings().find(b=>b.jobNo===jn)||{}).projectId||""};await saveJob(jn,{...strip(old),...rec});}
+  S.jobs[jn]={...(S.jobs[jn]||{}),...rec};toast(jn+" · "+JSLABEL[status]);render();
+}
+function statusDialog(jn){const i=jobInfo(jn);if(!i)return;
+  const cur=i.derived?(i.status==="stale"?"done":i.status):i.status;
+  openDlg("Job status · "+jn,`<p class="hint" style="margin:0">${fmt(i.start)} – ${fmt(i.end)} · ${esc(i.people.map(u=>u.short||u.name).join(", ")||"nobody booked")}</p>
+  <label>Status<select name="status">${opts(JSTATUS,cur)}</select></label>
+  <label>Report / form reference<input name="reportRef" value="${esc(i.report)}" placeholder="e.g. F07 service report, SR-0421"><span class="hint">Required for Report submitted. The job is only closed when the paperwork is in.</span></label>`,
+  {saveLabel:"Update status",allowReadonly:true,onSave:async fd=>{const st=fd.get("status"),rr=String(fd.get("reportRef")||"").trim();if(st==="reported"&&!rr){toast("Enter the report or form reference");return false;}return setJobStatus(jn,st,rr);}});
+}
+function allJobNos(){return [...new Set(bookings().filter(b=>b.kind!=="leave"&&b.jobNo).map(b=>b.jobNo))].sort();}
+
+/* ---------- MY BOOKINGS (staff view) ---------- */
+const TRIP=[["meet","Meeting point & time","e.g. HQ Shah Alam, Mon 7:00am"],["transport","Transport","e.g. Hilux WXX 1234 (Sufian drives) / MH2614 KUL–SDK 08:05, Hotel Sabah"],["contact","Site contact","e.g. En. Rahman, MET Port Dickson, 012-345 6789"],["access","Access & PPE","e.g. Station pass at gate, safety boots, life jacket"],["bring","What to bring","Tools, spares, test equipment"],["scope","Scope / tasks","Which stations, what work"],["forms","Forms & documents","e.g. F05, F06, WMS-03"]];
+function workDays(b){let n=0;for(const d of days(b.start,b.end))if(!isOff(d)||b.weekends)n++;return n;}
+function siteDays(pid,from,to){let n=0;for(const b of bookings()){if(b.personId!==pid||b.kind==="leave"||b.work!=="site"||b.end<from||b.start>to)continue;for(const d of days(b.start<from?from:b.start,b.end>to?to:b.end))if(!isOff(d)||b.weekends)n++;}return n;}
+function jobMates(b){const ids=new Set();bookings().forEach(x=>{if(x.id!==b.id&&x.kind!=="leave"&&x.jobNo&&x.jobNo===b.jobNo&&x.personId!==b.personId&&x.end>=b.start&&x.start<=b.end)ids.add(x.personId);});return [...ids].map(person).filter(Boolean);}
+function who(u){return `<span class="chip">${esc(u.short||u.name)}${u.phone?` · <span class="num">${esc(u.phone)}</span>`:""}</span>`;}
+function renderMy(){
+  const el=$("#v-my");let me=S.me;try{if(me===undefined)me=localStorage.getItem("emtrb.me")||"";}catch(e){me=me||"";}
+  if(me&&!S.people[me])me="";S.me=me;
+  const sel=`<select class="ctl" id="mySel" aria-label="Whose bookings">${opts(people().map(p=>[p.id,(p.short||p.name)+(p.role?" · "+p.role:"")]),me,"Choose your name…")}</select>`;
+  if(!me){el.innerHTML=`<div class="panel empty"><h3>Whose bookings?</h3><p>Pick your name once. This browser remembers it.</p><p>${sel}</p></div>`;wireMy(el);return;}
+  const p=S.people[me];const t=todayISO();const horizon=addDays(t,62);
+  const mine=bookings().filter(b=>b.personId===me&&b.end>=t&&b.start<=horizon).sort((a,b)=>a.start<b.start?-1:1);
+  const m0=t.slice(0,8)+"01",m1=addDays(addDays(m0,32).slice(0,8)+"01",-1);
+  const mySite=siteDays(me,m0,m1);const all=people().map(u=>siteDays(u.id,m0,m1)).filter(n=>n>0);const avg=all.length?Math.round(all.reduce((a,b)=>a+b,0)/all.length*10)/10:0;
+  let wd=0,bd=0;for(const d of days(t,addDays(t,13))){if(isOff(d))continue;wd++;const i=dayInfo(me,d);if(i.leave||i.load>0)bd++;}
+  const nl=bookings().filter(b=>b.personId===me&&b.kind==="leave"&&b.end>=t).sort((a,b)=>a.start<b.start?-1:1)[0];
+  const prs=projectsOfPerson(me);
+  const card=b=>{
+    const status=b.start<=t?["now","In progress · until "+fmt(b.end)]:diff(t,b.start)===1?["soon","Tomorrow"]:diff(t,b.start)<=7?["soon","In "+diff(t,b.start)+" days"]:["later",fmtY(b.start).replace(/ \d{4}$/,"")];
+    const d0=toD(b.start);
+    if(b.kind==="leave")return `<article class="mycard leave"><div class="mydate"><b>${d0.getUTCDate()}</b><span>${MON[d0.getUTCMonth()]}</span><small>${DOW[d0.getUTCDay()]}</small></div><div class="mybody"><div class="mytop"><span class="mst ${status[0]}">${esc(status[1])}</span><b>${esc(LEAVE[b.leaveType]||"Leave")}</b></div><div class="myrow"><span>When</span><div>${fmt(b.start)}${b.end!==b.start?" – "+fmt(b.end):""}${b.note?" · "+esc(b.note):""}</div></div></div></article>`;
+    const pr=proj(b.projectId);const job=(b.jobNo&&S.jobs[b.jobNo])||{};const mates=jobMates(b);const pm=pr&&person(pr.pmId);
+    const rows=[["When",`${fmt(b.start)}${b.end!==b.start?" – "+fmt(b.end):""} · ${workDays(b)} working day${workDays(b)===1?"":"s"}${Number(b.alloc||100)<100?" · "+b.alloc+"%":""}`],
+      ["Where",`${esc(WORK[b.work]||"")}${b.location?" · <b>"+esc(b.location)+"</b>":""}`],
+      ["With",mates.length?mates.map(who).join(""):'<span class="muted">Nobody else on this job</span>'],
+      ["PM",pm?who(pm):'<span class="muted">Not assigned</span>']];
+    const trip=TRIP.filter(f=>job[f[0]]).map(f=>[f[1].replace(/ \/.*/,""),`<div class="pre">${esc(job[f[0]])}</div>`]);
+    if(b.note)rows.push(["Note",esc(b.note)]);
+    const hs=days(b.start,b.end).filter(d=>hol(d)&&!isWE(d));if(hs.length)rows.push(["Holiday",hs.map(d=>fmt(d)+" "+esc(hol(d).name)).join(", ")]);
+    return `<article class="mycard" style="--pc:${pColor(pr)}"><div class="mydate"><b>${d0.getUTCDate()}</b><span>${MON[d0.getUTCMonth()]}</span><small>${DOW[d0.getUTCDay()]}</small></div><div class="mybody">
+      <div class="mytop"><span class="mst ${status[0]}">${esc(status[1])}</span><b>${esc(pr?(pr.label||pr.code):"?")}</b><span class="muted">${esc(pr?pr.name:"")}</span>${b.jobNo?`<span class="chip gold num">${esc(b.jobNo)}</span>`:'<span class="chip" style="color:var(--bad)">No job no.</span>'}${b.work==="site"?'<span class="chip">SITE</span>':""}${b.jobNo?statusPill(jobInfo(b.jobNo)):""}</div>
+      ${rows.map(r=>`<div class="myrow"><span>${r[0]}</span><div>${r[1]}</div></div>`).join("")}
+      ${trip.length?`<div class="mytrip">${trip.map(r=>`<div class="myrow"><span>${esc(r[0])}</span><div>${r[1]}</div></div>`).join("")}</div>`:`<div class="myempty">No trip details yet (meeting point, transport, site contact, what to bring). Ask your PM.</div>`}
+      <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px">${b.jobNo&&canStatus()?`<button class="btn" data-jst="${esc(b.jobNo)}">Update job status</button>`:""}<button class="btn edit-only" data-bk="${b.id}">${trip.length?"Edit booking & trip details":"Add trip details"}</button></div>
+    </div></article>`;};
+  el.innerHTML=`<div class="bar"><span class="range-label">${esc(p.name)}</span><span class="muted">${esc(p.role||"")}${p.staffNo?" · "+esc(p.staffNo):""}</span><span class="grow"></span><label class="muted" style="display:flex;gap:8px;align-items:center;font-size:12.5px">Not you? ${sel}</label></div>
+  <div class="stats">
+    <div class="stat"><div class="k">On site this month</div><div class="v num ${avg&&mySite>avg*1.5?"warn":""}">${mySite}<span style="font-size:14px;font-weight:500" class="muted"> days</span></div><div class="muted" style="font-size:12px">Team average ${avg} days</div></div>
+    <div class="stat"><div class="k">Booked · next 2 weeks</div><div class="v num">${bd}<span style="font-size:14px;font-weight:500" class="muted"> of ${wd} days</span></div><div class="muted" style="font-size:12px">${wd-bd} working day${wd-bd===1?"":"s"} free</div></div>
+    <div class="stat"><div class="k">Next leave</div><div class="v" style="font-size:20px;padding-top:6px">${nl?fmt(nl.start)+(nl.end!==nl.start?" – "+fmt(nl.end):""):"—"}</div><div class="muted" style="font-size:12px">${nl?esc(LEAVE[nl.leaveType]||""):"None booked"}</div></div>
+    <div class="stat"><div class="k">My projects</div><div style="padding-top:6px">${prs.map(pr=>`<span class="chip" style="background:${pColor(pr)};color:#fff">${esc(pr.code)}${pr.pmId===me?" · PM":""}</span>`).join("")||'<span class="muted">None</span>'}</div></div>
+  </div>
+  <p class="rule"><b>Your next 8 weeks.</b> If anything here is wrong or missing, tell your PM: the board is the plan everyone works from. Booking changes also arrive by e-mail with a calendar invite${p.email?"":" (<b>no e-mail on file for you yet</b>)"}.</p>
+  <div class="mylist">${mine.length?mine.map(card).join(""):'<div class="panel empty"><h3>Nothing booked</h3><p>No bookings in the next 8 weeks. Check with your manager before assuming you are free.</p></div>'}</div>`;
+  wireMy(el);
+}
+function wireMy(el){
+  const s=el.querySelector("#mySel");if(s)s.onchange=()=>{S.me=s.value;try{localStorage.setItem("emtrb.me",s.value)}catch(e){}render();};
+  el.querySelectorAll("[data-bk]").forEach(b=>b.onclick=()=>bookingDialog(S.bookings[b.dataset.bk]));
+  el.querySelectorAll("[data-jst]").forEach(b=>b.onclick=()=>statusDialog(b.dataset.jst));
 }
 
 /* ---------- FIND ---------- */
@@ -590,16 +732,17 @@ function renderProjects(){
     const now=[...new Set(bs.filter(b=>b.end>=today&&b.start<=w2).map(b=>b.personId))].map(person).filter(Boolean);
     let pd=0;bs.forEach(b=>{for(const d of days(b.start,b.end)){if(!isOff(d)||b.weekends)pd+=Number(b.alloc||100)/100;}});
     const pm=person(p.pmId);
-    return `<tr class="click" data-proj="${p.id}"><td><span class="swatch" style="background:${pColor(p)}"></span><b>${esc(p.code)}</b></td><td style="min-width:220px">${esc(p.name)}<div class="muted" style="font-size:12px">${esc(p.client||"")}</div></td>
+    return `<tr class="click" data-proj="${p.id}"><td style="white-space:nowrap"><span class="swatch" style="background:${pColor(p)}"></span><b class="num">${esc(p.code)}</b>${p.label?`<div class="muted" style="font-size:12px;padding-left:16px">${esc(p.label)}</div>`:""}</td><td style="min-width:260px">${esc(p.name)}<div class="muted" style="font-size:12px">${esc(p.client||"")}${p.endUser&&p.endUser!==p.client?" · end user "+esc(p.endUser):""}${p.poNo?` · <span class="num">${esc(p.poNo)}</span>`:""}</div></td>
       <td><span class="pill ${String(p.status||"").replace(/\s/g,"")}">${esc(p.status||"—")}</span></td>
       <td>${pm?esc(pm.name):'<span class="bad">No PM</span>'}</td>
       <td class="num" style="white-space:nowrap">${fmt(p.start)} – ${fmt(p.end)}</td>
+      <td style="white-space:nowrap">${(()=>{const tm=teamOf(p);return tm.length?tm.map(t=>person(t.personId)).map(x=>`<span class="av" title="${esc(x.name)}">${esc(initials(x.name))}</span>`).join("")+`<span class="muted" style="margin-left:10px">${tm.length}</span>`:'<span class="muted">Not assigned</span>';})()}</td>
       <td>${now.length?now.map(x=>`<span class="av" title="${esc(x.name)}">${esc(initials(x.name))}</span>`).join("")+`<span class="muted" style="margin-left:10px">${now.length}</span>`:(p.status==="Active"?'<span class="warnc">Nobody booked</span>':'<span class="muted">—</span>')}</td>
-      <td class="num">${(()=>{const k=Object.keys(jobsOf(p.id));return k.length?`${k.length} <span class="muted" style="font-size:12px">last ${esc(k.sort().slice(-1)[0])}</span>`:"—";})()}</td>
+      <td class="num">${(()=>{const k=Object.keys(jobsOf(p.id));const dn=k.filter(j=>{const i=jobInfo(j);return i&&(i.status==="done"||i.status==="reported");}).length;return k.length?`${k.length} <span class="muted" style="font-size:12px">· ${dn} done · last ${esc(k.sort().slice(-1)[0])}</span>`:"—";})()}</td>
       <td class="num">${pd?Math.round(pd*10)/10:"—"}</td></tr>`;}).join("");
   el.innerHTML=`<p class="rule"><b>Operating rule:</b> every Active project has a named PM and at least one person booked in the next two weeks. The PM directs the work; functional managers release the people.</p>
   <div class="bar"><span class="seg">${[["open","Open"],["Active","Active"],["Tender","Tender"],["Proposal","Proposal"],["all","All"]].map(o=>`<button data-ps="${o[0]}" aria-pressed="${S.pstatus===o[0]}">${o[1]}</button>`).join("")}</span><span class="grow"></span><button class="btn primary edit-only" id="addProj">+ Project</button></div>
-  <div class="panel tbl-wrap">${list.length?`<table><thead><tr><th>Code</th><th>Project</th><th>Status</th><th>PM</th><th>Dates</th><th>Team · next 2 wks</th><th>Jobs</th><th>Person-days booked</th></tr></thead><tbody>${rows}</tbody></table>`:`<div class="empty"><h3>No projects here</h3><p>Add projects so people can be booked onto them.</p></div>`}</div>`;
+  <div class="panel tbl-wrap">${list.length?`<table><thead><tr><th>Code</th><th>Project</th><th>Status</th><th>PM</th><th>Dates</th><th>Team</th><th>Booked · next 2 wks</th><th>Jobs</th><th>Person-days booked</th></tr></thead><tbody>${rows}</tbody></table>`:`<div class="empty"><h3>No projects here</h3><p>Add projects so people can be booked onto them.</p></div>`}</div>`;
   el.querySelectorAll("[data-ps]").forEach(b=>b.onclick=()=>{S.pstatus=b.dataset.ps;render();});
   el.querySelector("#addProj").onclick=()=>projectDialog({});
   el.querySelectorAll("[data-proj]").forEach(r=>r.onclick=()=>projectDialog(S.projects[r.dataset.proj]));
@@ -613,12 +756,13 @@ function renderPeople(){
     const nowB=i.leave?`<span class="muted">${esc(LEAVE[i.leave.leaveType]||"Leave")}</span>`:i.bs.length?i.bs.map(b=>{const pr=proj(b.projectId);return `<span class="chip" style="background:${pColor(pr)};color:#fff">${esc(pr?pr.code:"?")}</span>`;}).join(""):'<span class="okc">Available</span>';
     const nx=bookings().filter(b=>b.personId===p.id&&b.start>today).sort((a,b)=>a.start<b.start?-1:1)[0];
     const nxs=nx?(nx.kind==="leave"?esc(nx.leaveType||"Leave"):esc((proj(nx.projectId)||{}).code||"?"))+" from "+fmt(nx.start):"—";
-    return `<tr class="click" data-pp="${p.id}"${p.active===false?' style="opacity:.5"':""}><td><b>${esc(p.name)}</b>${p.example?' <span class="extag">EXAMPLE</span>':""}${p.active===false?' <span class="muted">(inactive)</span>':""}<div class="muted" style="font-size:12px">${esc(p.role||"")}</div></td><td>${esc(p.arm||"—")}</td><td style="min-width:200px">${(p.skills||[]).map(s=>`<span class="chip">${esc(s)}</span>`).join("")||'<span class="muted">—</span>'}</td><td>${nowB}</td><td class="muted" style="white-space:nowrap">${nxs}</td></tr>`;}).join("");
-  el.innerHTML=`<p class="rule"><b>Scope:</b> operations team only: Field Operations, Production, Engineering, IT Division and the Project Managers who run their work. BD, finance and management are not booked here.</p><p class="rule"><b>Operating rule:</b> one admin owns this list. Skills are what the person can be sent to do alone on site, not what they have seen once.</p>
-  <div class="bar"><span class="muted">${all.filter(p=>p.active!==false).length} active</span><span class="grow"></span><a class="btn edit-only" href="api/export" style="text-decoration:none">Download backup</a><button class="btn edit-only" id="imp">Paste team list</button><button class="btn primary edit-only" id="addP">+ Person</button></div>
-  <div class="panel tbl-wrap">${all.length?`<table><thead><tr><th>Name</th><th>Team</th><th>Skills</th><th>Today</th><th>Next</th></tr></thead><tbody>${rows}</tbody></table>`:`<div class="empty"><h3>No team members yet</h3><p>Use <b>Paste team list</b> to add everyone at once.</p></div>`}</div>`;
+    return `<tr class="click" data-pp="${p.id}"${p.active===false?' style="opacity:.5"':""}><td>${p.staffNo?`<span class="num muted" style="font-size:11.5px">${esc(p.staffNo)}</span><br>`:""}<b>${esc(p.name)}</b>${isIntern(p)?` <span class="itag">INTERN${p.internEnd?" · until "+fmt(p.internEnd):""}</span>${internEnded(p)?' <span class="muted">(ended)</span>':""}${p.supervisorId&&S.people[p.supervisorId]?`<div class="muted" style="font-size:12px">Supervisor: ${esc(S.people[p.supervisorId].short||S.people[p.supervisorId].name)}</div>`:""}`:""}${p.example?' <span class="extag">EXAMPLE</span>':""}${p.active===false?' <span class="muted">(inactive)</span>':""}<div class="muted" style="font-size:12px">${esc(p.role||"")}</div><div style="font-size:12px">${p.email?`<span class="muted">${esc(p.email)}</span>`:'<span class="warnc">No e-mail · will not be notified</span>'}${p.phone?` <span class="muted num">· ${esc(p.phone)}</span>`:""}</div></td><td>${esc(p.arm||"—")}</td><td>${projectsOfPerson(p.id).map(pr=>`<span class="chip" style="background:${pColor(pr)};color:#fff" title="${esc(pr.name)}${pr.pmId===p.id?" (PM)":""}">${esc(pr.code)}${pr.pmId===p.id?" · PM":""}</span>`).join("")||'<span class="muted">—</span>'}</td><td style="min-width:200px">${(p.skills||[]).map(s=>`<span class="chip">${esc(s)}</span>`).join("")||'<span class="muted">—</span>'}</td><td>${nowB}</td><td class="muted" style="white-space:nowrap">${nxs}</td></tr>`;}).join("");
+  el.innerHTML=`<p class="rule"><b>Scope:</b> operations team only: Field Operations, Production, Engineering, IT Division and the Project Managers who run their work. BD, finance and management are not booked here.</p><p class="rule"><b>Operating rule:</b> one admin owns this list. Skills are what the person can be sent to do alone on site, not what they have seen once. Everyone with an e-mail gets a notice and calendar invite when they are booked, moved or cancelled.</p>
+  <div class="bar"><span class="muted">${all.filter(p=>p.active!==false).length} active</span><span class="grow"></span>${S.mail&&S.mail!=="off"?'<button class="btn edit-only" id="testMail">Test e-mail</button>':""}<a class="btn edit-only" href="api/export" style="text-decoration:none">Download backup</a><button class="btn edit-only" id="imp">Paste team list</button><button class="btn primary edit-only" id="addP">+ Person</button></div>
+  <div class="panel tbl-wrap">${all.length?`<table><thead><tr><th>Name</th><th>Team</th><th>Projects</th><th>Skills</th><th>Today</th><th>Next</th></tr></thead><tbody>${rows}</tbody></table>`:`<div class="empty"><h3>No team members yet</h3><p>Use <b>Paste team list</b> to add everyone at once.</p></div>`}</div>`;
   el.querySelector("#addP").onclick=()=>personDialog({});
   el.querySelector("#imp").onclick=importDialog;
+  const tm=el.querySelector("#testMail");if(tm)tm.onclick=()=>{openDlg("Send a test e-mail",`<label>Send to<input type="email" name="to" placeholder="you@enviromet.my"></label><p class="hint" style="margin:0">Checks that the board can send booking notifications.</p>`,{saveLabel:"Send test",onSave:async fd=>{try{const r=await fetch("api/test-email",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify({to:fd.get("to")})});const j=await r.json().catch(()=>({}));if(!r.ok){toast("Not sent: "+(j.error||r.status));return false;}toast("Test e-mail sent");}catch(e){toast("Not sent: "+e.message);return false;}}});};
   el.querySelectorAll("[data-pp]").forEach(r=>r.onclick=()=>personDialog(S.people[r.dataset.pp]));
 }
 
@@ -631,11 +775,15 @@ function renderIssues(I){
   ${sec("Double-booked (over 100%)","bad","<b>Rule:</b> nobody is booked over 100% on a working day. Split the allocation or move one booking.",I.over,x=>`<li><span><b>${esc(x.p.name)}</b> · ${dl(x.d)}</span><button class="btn" data-jump="${x.d[0]}">Show on board</button></li>`)}
   ${sec("Booked while on leave","bad","<b>Rule:</b> approved leave wins. Re-assign the work or confirm the leave was cancelled.",I.leave,x=>`<li><span><b>${esc(x.p.name)}</b> · ${dl(x.d)}</span><button class="btn" data-jump="${x.d[0]}">Show on board</button></li>`)}
   ${sec("Two sites on the same day","bad","<b>Rule:</b> one person, one site per day. Two different locations on one day means one of them won't happen.",I.site,x=>`<li><span><b>${esc(x.p.name)}</b> · ${dl(x.d)}</span><button class="btn" data-jump="${x.d[0]}">Show on board</button></li>`)}
+  ${sec("Interns without supervision","bad","<b>Rule:</b> an intern goes to site only with a staff member booked on the same job number for the whole trip, and is never booked past their internship end date.",I.intern,x=>{const u=person(x.b.personId),pr=proj(x.b.projectId);return `<li><span><b>${esc(u.short||u.name)}</b> · ${esc(pr?pr.code:"?")} ${esc(x.b.jobNo||"")} · ${fmt(x.b.start)}–${fmt(x.b.end)} · ${esc(x.why)}</span><button class="btn" data-bk="${x.b.id}">Open booking</button></li>`;})}
+  ${sec("Jobs past their end date without a status","warn","<b>Rule:</b> when a job's dates have passed, the PM or the technician marks it Done (or moves the dates if it slipped). A job nobody closes is invisible work.",I.stale,i=>`<li><span><b class="num">${esc(i.jn)}</b> · ended ${fmt(i.end)} · ${esc(i.people.map(u=>u.short||u.name).join(", "))} ${statusPill(i)}</span><button class="btn" data-jst="${esc(i.jn)}">Update status</button></li>`)}
+  ${sec("Jobs done, report not submitted","warn","<b>Rule:</b> a job is closed only when its field form or service report is in. Record the reference when it is submitted.",I.noreport,i=>`<li><span><b class="num">${esc(i.jn)}</b> · done${i.statusAt?" "+fmt(i.statusAt.slice(0,10)):""} · ${esc(i.people.map(u=>u.short||u.name).join(", "))}</span><button class="btn" data-jst="${esc(i.jn)}">Add report</button></li>`)}
   ${sec("Bookings without a job number","warn","<b>Rule:</b> no job number, no work. Field claims, mileage and overtime must quote the job number on the booking. Open the booking and pick <b>New job</b> to get the next running number for that project.",I.nojob,x=>{const p=person(x.b.personId),pr=proj(x.b.projectId);return `<li><span><b>${esc(p?p.name:"?")}</b> · ${esc(pr?pr.code:"?")} · ${fmt(x.b.start)}–${fmt(x.b.end)}</span><button class="btn" data-bk="${x.b.id}">Add job no.</button></li>`;})}
   ${sec("Active projects without a PM","warn","<b>Rule:</b> every Active project has one named PM, and that PM has final say on the work.",I.nopm,x=>`<li><span><span class="swatch" style="background:${pColor(x.pr)}"></span><b>${esc(x.pr.code)}</b> · ${esc(x.pr.name)}</span><button class="btn" data-proj="${x.pr.id}">Assign PM</button></li>`)}
   ${sec("Active projects with nobody booked (next 2 weeks)","warn","<b>Rule:</b> an Active project with no one booked is stalled or running off the board. Book the team or move it to On Hold.",I.unstaffed,x=>`<li><span><span class="swatch" style="background:${pColor(x.pr)}"></span><b>${esc(x.pr.code)}</b> · ${esc(x.pr.name)}</span><button class="btn" data-proj="${x.pr.id}">Open</button></li>`)}
   ${sec("Nobody's booked this fortnight","warn","<b>Rule:</b> people with nothing booked are free capacity, or their work isn't being recorded. Check with the person before you assume they're free.",I.idle,x=>`<li><span><b>${esc(x.p.name)}</b> · ${esc(x.p.role||x.p.arm||"")}</span><button class="btn" data-pp="${x.p.id}">Open</button></li>`)}
   </div>`;
+  el.querySelectorAll("[data-jst]").forEach(b=>b.onclick=()=>{if(canStatus())statusDialog(b.dataset.jst);else toast("View-only access");});
   el.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{S.start=mondayOf(b.dataset.jump);go("board");});
   el.querySelectorAll("[data-bk]").forEach(b=>b.onclick=()=>bookingDialog(S.bookings[b.dataset.bk]));
   el.querySelectorAll("[data-proj]").forEach(b=>b.onclick=()=>projectDialog(S.projects[b.dataset.proj]));
@@ -643,7 +791,7 @@ function renderIssues(I){
 }
 
 /* ---------- dialogs ---------- */
-function openDlg(title,body,{onSave,onDelete,saveLabel="Save"}={}){
+function openDlg(title,body,{onSave,onDelete,saveLabel="Save",allowReadonly=false}={}){
   const m=$("#modal");
   m.innerHTML=`<div class="scrim" id="scrim"><div class="dlg" role="dialog" aria-modal="true" aria-label="${esc(title)}"><header><h2>${esc(title)}</h2><button class="btn ghost" id="dx" aria-label="Close">✕</button></header><form class="form" id="dform">${body}</form><footer>${onDelete?'<button class="btn danger" id="ddel" type="button">Delete</button>':""}<span class="grow"></span><button class="btn" id="dcancel" type="button">Cancel</button><button class="btn primary" id="dsave" type="button">${esc(saveLabel)}</button></footer></div></div>`;
   const close=()=>{m.innerHTML="";document.removeEventListener("keydown",esck);};
@@ -652,7 +800,7 @@ function openDlg(title,body,{onSave,onDelete,saveLabel="Save"}={}){
   $("#dform").addEventListener("submit",e=>e.preventDefault());
   $("#dsave").onclick=async()=>{const r=await onSave(new FormData($("#dform")));if(r!==false)close();};
   if(onDelete){const d=$("#ddel");d.onclick=async()=>{if(!d.classList.contains("armed")){d.classList.add("armed");d.textContent="Click again to delete";return;}await onDelete();close();};}
-  if(S.readonly){$("#dsave").hidden=true;const dd=$("#ddel");if(dd)dd.hidden=true;$("#dcancel").textContent="Close";}
+  if(S.readonly&&!allowReadonly){$("#dsave").hidden=true;const dd=$("#ddel");if(dd)dd.hidden=true;$("#dcancel").textContent="Close";}
   const f=m.querySelector("input,select");if(f)f.focus();
   return m;
 }
@@ -666,10 +814,11 @@ function bookingDialog(b){
   <label>Person<select name="personId" id="bperson" required>${opts(people().map(p=>[p.id,p.name+(p.role?" · "+p.role:"")]),b.personId,"Choose…")}</select></label>
   <div class="row2"><label>From<input type="date" name="start" id="bstart" value="${b.start||today}"></label><label>To<input type="date" name="end" id="bend" value="${b.end||b.start||today}"></label></div>
   <div id="pfields" ${kind==="leave"?"hidden":""} style="display:grid;gap:12px">
-    <label>Project<select name="projectId" id="bproj">${opts(projects().filter(p=>p.status!=="Closed"||p.id===b.projectId).map(p=>[p.id,p.code+" · "+p.name]),b.projectId,"Choose…")}</select></label>
+    <label>Project<select name="projectId" id="bproj">${opts(projects().filter(p=>p.status!=="Closed"||p.id===b.projectId).map(p=>[p.id,p.code+(p.label?" ("+p.label+")":"")+" · "+(p.name.length>70?p.name.slice(0,68)+"…":p.name)]),b.projectId,"Choose…")}</select></label>
     <div class="row2"><label>Where<select name="work" id="bwork">${opts(Object.entries(WORK),b.work||"site")}</select></label><label>Allocation<select name="alloc" id="balloc">${opts([[100,"100% · full day"],[75,"75%"],[50,"50% · half"],[25,"25%"]],b.alloc||100)}</select></label></div>
     <div class="row2" style="grid-template-columns:1fr"><label>Site / location<input name="location" id="bloc" value="${esc(b.location||"")}" placeholder="e.g. WMKA Alor Setar"></label></div>
     <label>Job number<select name="jobNo" id="bjob">${jobSelect(b.projectId,b.jobNo,isNew)}</select><span class="hint">Running number per project (e.g. TIDE8-001). To put several people on the same job, pick the existing number instead of a new one.</span></label>
+    <details class="tripbox" id="tripBox"><summary>Trip details for this job · shared with everyone on it</summary><div class="tgrid">${TRIP.map(f=>`<label>${esc(f[1])}${f[0]==="bring"||f[0]==="scope"?`<textarea name="trip_${f[0]}" id="trip_${f[0]}" placeholder="${esc(f[2])}"></textarea>`:`<input name="trip_${f[0]}" id="trip_${f[0]}" placeholder="${esc(f[2])}">`}</label>`).join("")}</div></details>
     <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="weekends" id="bwe" style="width:auto;height:auto"${b.weekends?" checked":""}> Include weekends &amp; public holidays (site work on off days)</label>
   </div>
   <div id="lfields" ${kind==="leave"?"":"hidden"}><label>Leave type<select name="leaveType" id="blt">${opts(Object.entries(LEAVE),b.leaveType||"AL")}</select></label></div>
@@ -686,8 +835,13 @@ function bookingDialog(b){
         if(d.jobNo==="__new"){newJob=await allocJob(d.projectId);if(newJob===false)return false;}
         Object.assign(rec,{projectId:d.projectId,work:d.work,alloc:Number(d.alloc),location:d.location||"",jobNo:newJob||(d.jobNo==="__new"?"":d.jobNo)||"",weekends:!!d.weekends});}
       const res=await save("bookings",b.id,rec,true);if(res===false)return false;
-      const jn=(res&&res.jobNo)||(newJob&&newJob!=="AUTO"?newJob:"");
-      toast((S.live?"Saved":"Saved on this screen only")+(jn?" · new job "+jn:""));},
+      if(rec.kind!=="leave")await ensureTeam(rec.projectId,rec.personId);
+      const jn=(res&&res.jobNo&&!b.jobNo&&d.jobNo==="__new")?res.jobNo:(newJob&&newJob!=="AUTO"?newJob:"");
+      const finalJob=(res&&res.jobNo)||rec.jobNo;
+      if(rec.kind!=="leave"&&finalJob&&finalJob!=="AUTO"){const tr={};TRIP.forEach(f=>tr[f[0]]=String(d["trip_"+f[0]]||"").trim());const old=S.jobs[finalJob]||{};
+        if(TRIP.some(f=>(old[f[0]]||"")!==tr[f[0]]))await saveJob(finalJob,{...strip(S.jobs[finalJob]||{}),jobNo:finalJob,projectId:rec.projectId,...tr});}
+      const nt=res&&res.notify;const ntx=nt?(nt.sent?` · ${nt.to} will be e-mailed${nt.delay?" in "+Math.max(1,Math.round(nt.delay/60))+" min":""}`:" · "+nt.reason):"";
+      toast((S.live?"Saved":"Saved on this screen only")+(jn?" · new job "+jn:"")+ntx);},
     onDelete:isNew?null:()=>remove("bookings",b.id)});
   function warn(t){m.querySelector("#bwarn").innerHTML=`<div class="warnbox">${esc(t)}</div>`;}
   m.querySelectorAll("[data-k]").forEach(x=>x.onclick=()=>{m.querySelectorAll("[data-k]").forEach(y=>y.setAttribute("aria-pressed",y===x));m.querySelector("#bkind").value=x.dataset.k;m.querySelector("#pfields").hidden=x.dataset.k==="leave";m.querySelector("#lfields").hidden=x.dataset.k!=="leave";check();});
@@ -698,49 +852,78 @@ function bookingDialog(b){
       if(lv.length)out.push((isLeave?"Already booked on project work: ":"On leave: ")+lv.slice(0,5).map(fmt).join(", ")+(lv.length>5?"…":""));
       if(ph.length&&!isLeave)out.push("Public holiday"+(ph.length>1?"s":"")+" in range: "+ph.slice(0,4).map(d=>fmt(d)+" "+hol(d).name).join(", ")+(we?" (counted as working, because weekends/holidays are ticked)":" (not counted as working days)"));
       if(ov.length)out.push("Over 100% on: "+ov.slice(0,5).map(fmt).join(", ")+(ov.length>5?"…":""));}
+    const iu=person(pid);if(iu&&isIntern(iu)&&m.querySelector("#bkind").value!=="leave"){if(iu.internEnd&&e>iu.internEnd)out.push("Internship ends "+fmt(iu.internEnd));if(m.querySelector("#bwork").value==="site")out.push("Intern on site: book a staff member on the same job number for the same dates");}
     m.querySelector("#bwarn").innerHTML=out.length?`<div class="warnbox">⚠ ${out.map(esc).join("<br>")}<br><span style="opacity:.8">You can still save. It will show under Issues.</span></div>`:"";};
-  m.querySelector("#bproj").addEventListener("change",e=>{m.querySelector("#bjob").innerHTML=jobSelect(e.target.value,"",true);});
-  ["#bperson","#bstart","#bend","#balloc","#bwe"].forEach(s=>m.querySelector(s).addEventListener("change",check));check();
+  const fillTrip=jn=>{const j=(jn&&S.jobs[jn])||{};let any=false;TRIP.forEach(f=>{const x=m.querySelector("#trip_"+f[0]);x.value=j[f[0]]||"";if(j[f[0]])any=true;if(S.readonly)x.readOnly=true;});m.querySelector("#tripBox").open=any;};
+  fillTrip(b.jobNo);
+  m.querySelector("#bjob").addEventListener("change",e=>{const v=e.target.value;fillTrip(v==="__new"?"":v);
+    const loc=m.querySelector("#bloc");if(v&&v!=="__new"&&!loc.value){const o=bookings().find(x=>x.jobNo===v&&x.location);if(o){loc.value=o.location;const w=m.querySelector("#bwork");if(o.work)w.value=o.work;}}});
+  m.querySelector("#bproj").addEventListener("change",e=>{m.querySelector("#bjob").innerHTML=jobSelect(e.target.value,"",true);fillTrip("");});
+  ["#bperson","#bstart","#bend","#balloc","#bwe","#bwork"].forEach(s=>m.querySelector(s).addEventListener("change",check));check();
 }
 
 function projectDialog(p){
   p=p||{};const isNew=!p.id;const locked=!isNew&&jobHigh(p.id)>0;const color=p.color||COLORS[projects().length%COLORS.length];
-  const body=`<div class="row2"><label>Code<input name="code" value="${esc(p.code||"")}" placeholder="e.g. SIREN30" maxlength="14"${locked?' readonly title="Locked: job numbers already use this code"':""}>${locked?'<span class="hint">Locked. Job numbers already use it.</span>':'<span class="hint">Becomes the job number prefix, e.g. CODE-001</span>'}</label><label>Status<select name="status">${opts(STATUSES.map(s=>[s,s]),p.status||"Active")}</select></label></div>
+  const body=`<div class="row2"><label>Code<input name="code" value="${esc(p.code||"")}" placeholder="e.g. P0362026" maxlength="14"${locked?' readonly title="Locked: job numbers already use this code"':""}>${locked?'<span class="hint">Locked. Job numbers already use it.</span>':'<span class="hint">Becomes the job number prefix, e.g. CODE-001</span>'}</label><label>Status<select name="status">${opts(STATUSES.map(s=>[s,s]),p.status||"Active")}</select></label></div>
   <label>Project name<input name="name" value="${esc(p.name||"")}"></label>
-  <label>Client<input name="client" value="${esc(p.client||"")}" placeholder="e.g. MET Malaysia"></label>
+  <label>Short label<input name="label" value="${esc(p.label||"")}" placeholder="e.g. TIDE8" maxlength="16"><span class="hint">Shown on the board bars. Job numbers still use the project code.</span></label>
+  <div class="row2"><label>Client<input name="client" value="${esc(p.client||"")}" placeholder="e.g. MET Malaysia"></label><label>End user<input name="endUser" value="${esc(p.endUser||"")}" placeholder="e.g. JPS"></label></div>
+  <label>PO / SST no.<input name="poNo" value="${esc(p.poNo||"")}"></label>
   <label>Project Manager<select name="pmId">${opts(people().map(x=>[x.id,x.name]),p.pmId,"Not assigned")}</select></label>
   <div class="row2"><label>Start<input type="date" name="start" value="${p.start||""}"></label><label>End<input type="date" name="end" value="${p.end||""}"></label></div>
+  <div style="display:grid;gap:6px"><div style="font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.03em">Project team <span class="hint">· who is assigned. Book their dates on the Board or Project schedule.</span></div>
+    <div class="teamlist" id="teamList"></div>
+    <div class="tadd edit-only"><select id="tPerson" aria-label="Person to add"></select><select id="tRole" aria-label="Role">${opts(TEAMROLES.map(r=>[r,r]),"Technician")}</select><button type="button" class="btn" id="tAdd">+ Add</button></div></div>
   <label>Colour on board<div class="skillpick">${COLORS.map(c=>`<button type="button" data-c="${c}" aria-pressed="${c===color}" aria-label="Colour ${c}" style="width:26px;height:22px;background:${c};border-radius:4px;${c===color?"box-shadow:0 0 0 2px var(--ink)":""}"></button>`).join("")}</div></label>
-  <input type="hidden" name="color" id="pcol" value="${color}">`;
+  <input type="hidden" name="color" id="pcol" value="${color}">
+  ${!isNew&&Object.keys(jobsOf(p.id)).length?`<div style="display:grid;gap:6px"><div style="font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.03em">Jobs <span class="hint">· update status from Project schedule or My bookings</span></div><div class="joblist">${Object.keys(jobsOf(p.id)).sort().map(jn=>{const i=jobInfo(jn);return `<div class="jrow"><b class="num">${esc(jn)}</b>${statusPill(i)}<span class="muted">${fmt(i.start)}–${fmt(i.end)} · ${esc(i.people.map(u=>u.short||u.name).join(", "))}</span>${i.report?`<span class="muted num" style="font-size:11.5px">${esc(i.report)}</span>`:""}</div>`;}).join("")}</div></div>`:""}`;
   const m=openDlg(isNew?"New project":"Edit project",body,{
     onSave:async fd=>{const d=Object.fromEntries(fd.entries());if(!d.code.trim()||!d.name.trim()){toast("Code and name are required");return false;}
-      return save("projects",p.id,{code:d.code.trim().toUpperCase(),name:d.name.trim(),client:d.client||"",pmId:d.pmId||"",status:d.status,start:d.start||"",end:d.end||"",color:d.color,jobSeq:Number(p.jobSeq||0)});},
+      return save("projects",p.id,{code:d.code.trim().toUpperCase(),name:d.name.trim(),client:d.client||"",label:(d.label||"").trim().toUpperCase(),endUser:d.endUser||"",poNo:(d.poNo||"").trim(),pmId:d.pmId||"",status:d.status,start:d.start||"",end:d.end||"",color:d.color,jobSeq:Number((proj(p.id)||p).jobSeq||0),team:team.filter(t=>t.personId!==d.pmId)});},
     onDelete:isNew?null:async()=>{const n=bookings().filter(b=>b.projectId===p.id).length;if(n){await save("projects",p.id,{...strip(p),status:"Closed"});toast(`Has ${n} booking(s), so it was set to Closed instead of deleted`);return;}return remove("projects",p.id);}});
+  let team=((p.team)||[]).filter(t=>S.people[t.personId]).map(t=>({...t}));
+  const drawTeam=()=>{const pmSel=m.querySelector('select[name="pmId"]').value;
+    const list=team.slice().sort((a,b)=>(person(a.personId).name||"").localeCompare(person(b.personId).name||""));
+    m.querySelector("#teamList").innerHTML=(pmSel&&person(pmSel)?`<div class="trow"><span>${esc(person(pmSel).name)} <span class="muted">· ${esc(person(pmSel).arm||"")}</span></span><span class="chip gold" style="justify-self:start">Project Manager</span><span></span></div>`:"")+
+      (list.length?list.map(t=>{const u=person(t.personId);return `<div class="trow"><span>${esc(u.name)} <span class="muted">· ${esc(u.role||u.arm||"")}</span></span><select data-trole="${esc(t.personId)}" aria-label="Role for ${esc(u.name)}"${S.readonly?" disabled":""}>${opts(TEAMROLES.map(r=>[r,r]),t.role||"Team member")}</select><button type="button" class="btn ghost edit-only" data-tdel="${esc(t.personId)}" aria-label="Remove ${esc(u.name)}">✕</button></div>`;}).join(""):'<div class="hint">No one assigned yet.</div>');
+    const inTeam=new Set(team.map(t=>t.personId).concat(pmSel?[pmSel]:[]));
+    m.querySelector("#tPerson").innerHTML=opts(people().filter(u=>!inTeam.has(u.id)).map(u=>[u.id,u.name+(u.arm?" · "+u.arm:"")]),"","Choose a person…");
+    m.querySelectorAll("[data-trole]").forEach(x=>x.onchange=()=>{const t=team.find(y=>y.personId===x.dataset.trole);if(t)t.role=x.value;});
+    m.querySelectorAll("[data-tdel]").forEach(x=>x.onclick=()=>{team=team.filter(y=>y.personId!==x.dataset.tdel);drawTeam();});};
+  drawTeam();
+  m.querySelector('select[name="pmId"]').addEventListener("change",drawTeam);
+  m.querySelector("#tAdd").onclick=()=>{const pid=m.querySelector("#tPerson").value;if(!pid){toast("Choose a person to add");return;}team.push({personId:pid,role:m.querySelector("#tRole").value});drawTeam();};
   m.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{m.querySelector("#pcol").value=b.dataset.c;m.querySelectorAll("[data-c]").forEach(x=>{x.style.boxShadow=x===b?"0 0 0 2px var(--ink)":"";x.setAttribute("aria-pressed",x===b);});});
 }
 
 function personDialog(p){
   p=p||{};const isNew=!p.id;const sk=new Set(p.skills||[]);
   const body=`<label>Full name<input name="name" value="${esc(p.name||"")}"></label>
+  <div class="row2"><label>Staff no.<input name="staffNo" value="${esc(p.staffNo||"")}" placeholder="e.g. EMTS031"></label><label>Name on board<input name="short" value="${esc(p.short||"")}" placeholder="Short name, e.g. Sufian"></label></div>
+  <label>E-mail<input type="email" name="email" value="${esc(p.email||"")}" placeholder="name@enviromet.my"><span class="hint">Booking notifications and calendar invites go here.</span></label>
+  <label>Mobile<input type="tel" name="phone" value="${esc(p.phone||"")}" placeholder="e.g. 012-345 6789"><span class="hint">Shown to teammates on the same job.</span></label>
   <div class="row2"><label>Role / title<input name="role" value="${esc(p.role||"")}" placeholder="e.g. Field Technician"></label><label>Team<select name="arm">${opts(ARMS.map(a=>[a,a]),p.arm,"Choose…")}</select></label></div>
+  <div class="row2"><label>Type<select name="type" id="ptype">${opts([["Staff","Staff"],["Intern","Intern / industrial training"]],p.type||"Staff")}</select></label><label id="pendL"${isIntern(p)?"":" hidden"}>Internship ends<input type="date" name="internEnd" value="${esc(p.internEnd||"")}"></label></div>
+  <label id="psupL"${isIntern(p)?"":" hidden"}>Supervisor<select name="supervisorId">${opts(Object.values(S.people).filter(u=>u.id!==p.id&&!isIntern(u)&&u.active!==false).sort((a,b)=>(a.short||a.name).localeCompare(b.short||b.name)).map(u=>[u.id,u.short||u.name]),p.supervisorId||"","Choose…")}</select><span class="hint">Interns are never sent to site alone. The board flags it if they are.</span></label>
   <label>Skills (can be sent alone to do this)<div class="skillpick">${SKILLS.map(s=>`<button type="button" data-s="${esc(s)}" aria-pressed="${sk.has(s)}">${esc(s)}</button>`).join("")}</div></label>
   <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="active" style="width:auto;height:auto"${p.active===false?"":" checked"}> Active (show on the board)</label>`;
   const m=openDlg(isNew?"Add person":"Edit person",body,{
     onSave:async fd=>{const d=Object.fromEntries(fd.entries());if(!d.name.trim()){toast("Name is required");return false;}
-      return save("people",p.id,{name:d.name.trim(),role:d.role||"",arm:d.arm||"",skills:[...sk],active:!!d.active});},
+      return save("people",p.id,{name:d.name.trim(),short:(d.short||"").trim(),staffNo:(d.staffNo||"").trim().toUpperCase(),email:(d.email||"").trim().toLowerCase(),phone:(d.phone||"").trim(),type:d.type||"Staff",internEnd:d.type==="Intern"?(d.internEnd||""):"",supervisorId:d.type==="Intern"?(d.supervisorId||""):"",role:d.role||"",arm:d.arm||"",skills:[...sk],active:!!d.active,...(p.example?{example:true}:{})});},
     onDelete:isNew?null:async()=>{const n=bookings().filter(b=>b.personId===p.id).length;if(n){await save("people",p.id,{...strip(p),active:false});toast(`Has ${n} booking(s), so they were set to inactive instead of deleted`);return;}return remove("people",p.id);}});
+  m.querySelector("#ptype").onchange=e=>{const i=e.target.value==="Intern";m.querySelector("#pendL").hidden=!i;m.querySelector("#psupL").hidden=!i;};
   m.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{const s=b.dataset.s;sk.has(s)?sk.delete(s):sk.add(s);b.setAttribute("aria-pressed",sk.has(s));});
 }
 
 function importDialog(){
-  const body=`<p class="hint" style="margin:0">One person per line: <b>Name | Role | Team | skill, skill</b>. Tabs from Excel work too. Team must match one of: ${ARMS.map(esc).join(", ")}. Skills that aren't on the list are kept as typed.</p>
+  const body=`<p class="hint" style="margin:0">One person per line: <b>Name | Role | Team | skill, skill | e-mail | mobile</b>. Tabs from Excel work too. Team must match one of: ${ARMS.map(esc).join(", ")}. Skills that aren't on the list are kept as typed.</p>
   <label>Team list<textarea name="txt" id="itxt" placeholder="Ahmad Faiz | Field Technician | Field Operations | AWOS/RVR, Driving (site)&#10;Nur Aina | Production Engineer | Production | RTU / Telemetry, QC / Testing"></textarea></label><div id="iprev" class="hint"></div>`;
   const m=openDlg("Paste team list",body,{saveLabel:"Add people",onSave:async fd=>{const rows=parse(fd.get("txt"));if(!rows.length){toast("Nothing to add");return false;}
     for(const r of rows)await save("people",null,r,true);toast(`Added ${rows.length} people`);}});
   function parse(t){return String(t||"").split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(l=>{const c=l.split(/\t|\|/).map(x=>x.trim());
     const arm=ARMS.find(a=>a.toLowerCase()===(c[2]||"").toLowerCase())||ARMS.find(a=>(c[2]||"")&&a.toLowerCase().startsWith((c[2]||"").toLowerCase().slice(0,4)))||"";
     const skills=(c[3]||"").split(/[,;]/).map(s=>s.trim()).filter(Boolean).map(s=>SKILLS.find(k=>k.toLowerCase()===s.toLowerCase())||s);
-    return {name:c[0],role:c[1]||"",arm,skills,active:true};}).filter(r=>r.name);}
+    return {name:c[0],role:c[1]||"",arm,skills,email:(c[4]||"").toLowerCase(),phone:c[5]||"",active:true};}).filter(r=>r.name);}
   m.querySelector("#itxt").addEventListener("input",e=>{const r=parse(e.target.value);m.querySelector("#iprev").textContent=r.length?`${r.length} people ready. ${r.filter(x=>!x.arm).length?r.filter(x=>!x.arm).length+" without a recognised team.":""}`:"";});
 }
 function nextHolLine(from,to){
@@ -768,6 +951,8 @@ async function removeExamples(){
   const list=exampleDocs().sort((a,b)=>(a[0]==="bookings"?0:1)-(b[0]==="bookings"?0:1));
   for(const [c,id] of list){ if(!S.live){delete S[c][id];continue;}
     try{await S.db.collection(c).doc(id).delete();}catch(e){toast("Couldn't remove: "+((e&&e.message)||"try again"));return;} }
+  const exIds=new Set(list.filter(x=>x[0]==="people").map(x=>x[1]));
+  for(const pr of projects()){if((pr.team||[]).some(t=>exIds.has(t.personId))){const team=pr.team.filter(t=>!exIds.has(t.personId));await save("projects",pr.id,{...strip(pr),team},true);}}
   if(!S.live)render();toast("Example data removed");
 }
 function escRe(x){return String(x).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
@@ -789,10 +974,19 @@ async function allocJob(pid){
   if(S.hosted)return "AUTO";
   const pr=proj(pid);if(!pr)return "";
   const n=jobHigh(pid)+1;const no=fmtJob(pid,n);
-  if(S.live){try{await S.db.collection("projects").doc(pid).set({...strip(pr),jobSeq:n,updatedAt:new Date().toISOString()});}catch(e){toast("Couldn't reserve a job number: "+((e&&e.message)||"try again"));return false;}}
+  if(S.live){S.projects[pid]={...pr,jobSeq:n};try{await S.db.collection("projects").doc(pid).set({...strip(pr),jobSeq:n,updatedAt:new Date().toISOString()});}catch(e){toast("Couldn't reserve a job number: "+((e&&e.message)||"try again"));return false;}}
   else S.projects[pid]={...pr,jobSeq:n};
   return no;
 }
+function teamOf(pr){return ((pr&&pr.team)||[]).filter(t=>t&&S.people[t.personId]);}
+function projectsOfPerson(pid){return projects().filter(pr=>pr.status!=="Closed"&&(pr.pmId===pid||teamOf(pr).some(t=>t.personId===pid)));}
+// Booking someone on a project also puts them on that project's team.
+async function ensureTeam(pid,personId){
+  const pr=proj(pid);if(!pr||pr.pmId===personId||teamOf(pr).some(t=>t.personId===personId))return;
+  const team=[...(pr.team||[]),{personId,role:"Team member"}];S.projects[pid]={...pr,team};
+  await save("projects",pid,{...strip(pr),team},true);
+}
+async function saveJob(id,rec){rec.updatedAt=new Date().toISOString();S.jobs[id]={...rec,id};if(!S.live)return;try{await S.db.collection("jobs").doc(id).set(rec);}catch(e){toast("Trip details not saved: "+((e&&e.message)||"try again"));}}
 function strip(o){const c={...o};delete c.id;delete c._lane;return c;}
 
 /* ---------- persistence ---------- */
@@ -831,10 +1025,10 @@ render();
     doc:id=>({set:rec=>req("PUT","api/"+col+"/"+encodeURIComponent(id),rec),delete:()=>req("DELETE","api/"+col+"/"+encodeURIComponent(id))}),
     onSnapshot(fn){(subs[col]=subs[col]||[]).push(fn);if(state)fn(snap(col));return ()=>{subs[col]=subs[col].filter(f=>f!==fn);};}};}};
   try{await load();}catch(e){S.live=false;render();toast("Can't reach the server");return;}
-  try{const r=await fetch("api/me",{cache:"no-store",credentials:"same-origin"});if(r.ok){const me=await r.json();S.readonly=me.role!=="editor";}}catch(e){}
+  try{const r=await fetch("api/me",{cache:"no-store",credentials:"same-origin"});if(r.ok){const me=await r.json();S.readonly=me.role!=="editor";S.mail=me.mail||"off";if(S.readonly&&!S._viewStored)S.view="my";}}catch(e){}
   S.db=api;S.live=true;S.hosted=true;
   let pending=null;const sched=()=>{if(pending)return;pending=requestAnimationFrame(()=>{pending=null;if(!$("#modal").innerHTML)render();else setTimeout(sched,300);});};
-  for(const col of ["people","projects","bookings","holidays"]){
+  for(const col of ["people","projects","bookings","holidays","jobs"]){
     api.collection(col).onSnapshot(sn=>{const m={};sn.docs.forEach(d=>{m[d.id]={...d.data(),id:d.id};});S[col]=m;S.loaded[col]=true;sched();});
   }
   setInterval(()=>{if(!document.hidden)load().catch(()=>{});},5000);
