@@ -1,7 +1,7 @@
 "use strict";
-const { roleOf } = require("../lib/auth");
-const { json, unauthorized, readBody } = require("../lib/http");
-const { sendTest } = require("../lib/mailer");
+const { roleOf } = require("../../lib/auth");
+const { json, unauthorized, readBody } = require("../../lib/http");
+const { sendTest } = require("../../lib/mailer");
 
 module.exports = async (req, res) => {
   const role = roleOf(req.headers);
